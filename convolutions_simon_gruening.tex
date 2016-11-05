@@ -1,0 +1,112 @@
+\input{header.tex}
+\setcounter{section}{0}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+
+\section{Examples of Topological Groups}
+
+\begin{definition}
+Topological Group
+\end{definition}
+
+\begin{definition}
+Locally Compact
+\end{definition}
+
+\begin{definition}
+Haar Measure
+\end{definition}
+
+	\begin{example}
+	$\mathbb{R}^n, \mathbb{Z}^n, \mathbb{T}^n$
+	\end{example}
+	
+\begin{example}
+$dx/|x|$
+\end{example}	
+	
+\begin{example}
+Heisenberg Group $\mathbb{H}^n$
+\end{example}	
+
+	
+\section{Convolution}
+
+\begin{definition}
+ Let $f,g \in L^1(G)$. Define the \textbf{convolution} $f*g$ by
+\begin{gather}
+ (f*g)(x) = \int_G f(y)g(y^{-1}x) d\lambda(y)
+\end{gather}
+\end{definition}
+
+\section{Basic Convolution Inequalities}
+
+
+\begin{theorem}
+Minkowskis Inequality, triangle inequality for Lp spaces
+\end{theorem}
+
+\begin{theorem}
+Youngs Inequality
+\end{theorem}
+
+
+\begin{theorem}
+Youngs Inequality for Weak Type Spaces
+ouch proof
+\end{theorem}
+
+\section{Approximate Identities}
+
+Approximation of dirac delta function , identity element of convolutions
+
+\begin{definition}
+An \textbf{approximate identity} (as $\varepsilon \rightarrow 0$) is a family of $L^1(G)$ functions $k_\varepsilon$ with the following three properties: 
+\begin{enumerate}[label=(\roman*)]
+\item There exists a constant $c > 0$ such that $\| k_\varepsilon \| _ {L^1(G)} \leqslant c$ for all $ \varepsilon > 0 $ . 
+\item $ \int_G k_\varepsilon(x) d\lambda(x) = 1$ for all $\varepsilon > 0 $.
+\item For any neighborhood $V$ of the identity element $e$ of the group G we have $ \int_{V^c} | k_\varepsilon(x) | d \lambda(x) \rightarrow 0  $ as $ \varepsilon \rightarrow 0 $ . 
+\end{enumerate}
+\end{definition}
+
+\begin{example}
+\begin{figure}[h!bt]
+\centering
+\includegraphics[width = \textwidth]{matlab/fejerkernel}
+\caption{Fejer Kernel}
+\label{fejer}
+\end{figure}
+\end{example}
+
+\begin{theorem}
+approx. id. on locallz compact group G with left Haar measure
+\end{theorem}
+
+\begin{theorem}
+ke familz of funcs on loc compact group G with properties...
+\end{theorem}
+
+\section{Required Stuff}
+
+\begin{enumerate}
+\item hausdorf topological space
+\item counting measure
+\item area of intersecting circles
+\item banach algebra
+\item hoelders inequality
+\item fubini
+\item chebyschevs inequality
+\item lebesgue dominated conv. thm.
+\item measure theoretic support
+\end{enumerate}
+
+chapter 1 stuff:
+\begin{enumerate}
+\item Lp norms and other defs etc.
+\item distr. functions
+\end{enumerate}
+
+\end{document}
