@@ -49,36 +49,144 @@ Heisenberg Group $\mathbb{H}^n$
 \end{equation}
 \end{definition}
 
+\begin{remark}
 Note that on $\mathbb{R}^n$ with an additive structure (our preferred environment for later chapters), we will simply have:
-
-\begin{equation}
+\begin{equation*}
  (f*g)(x) = \int_{\mathbb{R}^n} f(y)g(x-y) dy
+\end{equation*}
+\end{remark}
+
+\begin{example}
+Let $G = \mathbb{R}$, 
+\begin{equation}
+f(x) = \begin{cases}
+1 & -1 \leq x \leq 1 \\
+0 & \text{else}
+\end{cases}
 \end{equation}
-
-\begin{theorem}
-Convolution is define $\lambda$ almost everywhere. To see this we take the $L_1$ norm on the definition to find it finite:
-
+Then we calculate:
 \begin{align*}
-\tag{Apply Norm}
- \int_G \int_G \abs{f(y)} \abs{g(y^{-1}x)} d\lambda(y) d\lambda(x) = \\
- \tag{Fubini}
- \int_G \int_G \abs{f(y)} \abs{g(y^{-1}x)} d\lambda(x) d\lambda(y) \\
- \tag{Measure-Invariance}
- \int_G \abs{f(y)} \int_G  \abs{g(y^{-1}x)} d\lambda(x) d\lambda(y) \\
- \tag{Left Haar}
- \int_G \abs{f(y)} \int_G  \abs{g(x)} d\lambda(x) d\lambda(y) \\
- \tag{Definition}
- blah \\
+(f \ast f)(x) &= \int_\mathbb{R} f(y)f(x-y) d\lambda(y) \\
+&= 
+\begin{cases}
+\displaystyle
+\int_\mathbb{R} 0 d\lambda(y) & -1 \leq x \leq 1 \\
+\displaystyle
+\int_\mathbb{R} \chi_{\intcc{-1,1}\cap\intcc{x-1,x+1}}(x) d\lambda(x) & \text{else}
+\end{cases}
 \end{align*}
 
-\end{theorem}
+Notice that the convolution operator has a natural smoothing effect on $f$, as it does on every function.
+
+\end{example}
+
+\begin{lemma}
+Convolution is defined $\lambda$ almost everywhere. 
+\end{lemma}
+
+\begin{proof}To see this we take the $L_1$ norm on the definition to find it finite:
+\begin{align*}
+\tag{Apply Norm}
+ \norm{(f \ast g)(x)}_{L^1} &= \int_G \abs{ \int_G f(y) g(y^{-1}x) d\lambda(y) } d\lambda(x) 
+\\ 
+\tag{Tri. Ineq.}
+&\leq \int_G \int_G \abs[0]{f(y)} \abs[0]{g(y^{-1}x)} d\lambda(y) d\lambda(x) \\
+ \tag{Fubini}
+&=  \int_G \int_G \abs[0]{f(y)} \abs[0]{g(y^{-1}x)} d\lambda(x) d\lambda(y) \\
+ \tag{Measure-Invariance}
+&=  \int_G \abs[0]{f(y)} \int_G  \abs[0]{g(y^{-1}x)} d\lambda(x) d\lambda(y) \\
+ \tag{Left Haar}
+&=  \int_G \abs[0]{f(y)} \int_G  \abs[0]{g(x)} d\lambda(x) d\lambda(y) \\
+ \tag{Def.}
+ &= \norm{f}_{L^1} \norm{g}_{L^1} \\
+ \tag{Def.}
+ &< \infty
+\end{align*}
+\end{proof}
+
+\begin{lemma}
+\begin{equation*}
+(f \ast g)(x) = \int_G f(xz)g(z^{-1}) d\lambda(z)
+\end{equation*}
+\end{lemma}
+
+\begin{proof}
+We perform a change of variables $z = x^{-1}y$:
+\begin{align*}
+(f \ast g)(x) &= \int_G f(y)g(y^{-1}x) d\lambda(y) \\
+&= \int_G f(xx^{-1}y)g((yx^{-1})^{-1}) d\lambda(y) \\
+\tag{Left Invariance}
+&= \int_G f(xz)g(z^{-1}) d\lambda(x^{-1}y) \\
+&= \int_G f(xz)g(z^{-1}) d\lambda(z) \\
+\end{align*}
+\end{proof}
+
+\begin{proposition}
+
+$\forall f,g,h \in L^1(G):$
+\begin{enumerate}
+\item
+$f \ast (g \ast h) = (f \ast g) \ast h $
+\item
+$f \ast (g + h) = f \ast g + f \ast h \wedge (f+g) \ast h = f\ast h + f\ast g $
+\end{enumerate}
+Thus convolution is associative and distributive.
+\end{proposition}
+
+\begin{proof}
+Associativity:
+\begin{align*}
+ZZZZZZZZZZ
+\end{align*}
+Distributivity:
+\begin{align*}
+f \ast (g + h) &= \int_G f(y) (g+h)(y^{-1}x)d\lambda(y)\\
+&= \int_G f(y) (g(y^{-1}x)+h(y^{-1}x))d\lambda(y)\\
+&= \int_G f(y)g(y^{-1}x)+f(y)h(y^{-1}x)d\lambda(y)\\
+&= \int_G f(y)g(y^{-1}x) d\lambda(y) + \int_G f(y)h(y^{-1}x) d\lambda(y)\\
+&= f \ast g + f \ast h
+\end{align*}
+The mirror statement follows analogously. 
+\end{proof}
 
 \section{Basic Convolution Inequalities}
 
+\begin{definition}
+$ p' := p / (p-1) $
+\end{definition}
+
+\begin{remark}
+$ZZZZZZZZZZ$
+\end{remark}
 
 \begin{theorem}
 Minkowskis Inequality, triangle inequality for Lp spaces
 \end{theorem}
+
+\begin{remark}
+We can work with absolute value functions...ZZZ due to the triangle inequality:
+\begin{align*}
+f \ast g &= \int_G f(y)g(y^{-1}x) d\lambda(y) \\
+&\leq \abs{ \int_G f(y)g(y^{-1}x) d\lambda(y) } \\
+&\leq \int_G \abs[0]{f(y)}\abs[0]{g(y^{-1}x)} d\lambda(y) \\
+&= \abs{f} \ast \abs{g}
+\end{align*}
+\end{remark}
+
+\begin{proof}
+
+Case $p=1$:
+ZZZZ
+Case $p=\infty$:
+ZZZZ
+
+For $ 1 < p < \infty$, we 
+
+\begin{align*}
+ZZZ
+\end{align*}
+
+\end{proof}
 
 \begin{theorem}
 Youngs Inequality
