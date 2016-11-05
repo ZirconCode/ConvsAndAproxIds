@@ -13,6 +13,8 @@
 
 \section{Examples of Topological Groups}
 
+
+
 \begin{definition}
 Topological Group
 \end{definition}
@@ -42,10 +44,34 @@ Heisenberg Group $\mathbb{H}^n$
 
 \begin{definition}
  Let $f,g \in L^1(G)$. Define the \textbf{convolution} $f*g$ by
-\begin{gather}
- (f*g)(x) = \int_G f(y)g(y^{-1}x) d\lambda(y)
-\end{gather}
+\begin{equation}
+ (f*g)(x) := \int_G f(y)g(y^{-1}x) d\lambda(y)
+\end{equation}
 \end{definition}
+
+Note that on $\mathbb{R}^n$ with an additive structure (our preferred environment for later chapters), we will simply have:
+
+\begin{equation}
+ (f*g)(x) = \int_{\mathbb{R}^n} f(y)g(x-y) dy
+\end{equation}
+
+\begin{theorem}
+Convolution is define $\lambda$ almost everywhere. To see this we take the $L_1$ norm on the definition to find it finite:
+
+\begin{align*}
+\tag{Apply Norm}
+ \int_G \int_G \abs{f(y)} \abs{g(y^{-1}x)} d\lambda(y) d\lambda(x) = \\
+ \tag{Fubini}
+ \int_G \int_G \abs{f(y)} \abs{g(y^{-1}x)} d\lambda(x) d\lambda(y) \\
+ \tag{Measure-Invariance}
+ \int_G \abs{f(y)} \int_G  \abs{g(y^{-1}x)} d\lambda(x) d\lambda(y) \\
+ \tag{Left Haar}
+ \int_G \abs{f(y)} \int_G  \abs{g(x)} d\lambda(x) d\lambda(y) \\
+ \tag{Definition}
+ blah \\
+\end{align*}
+
+\end{theorem}
 
 \section{Basic Convolution Inequalities}
 
