@@ -73,7 +73,7 @@ Then we calculate:
 \int_\mathbb{R} 0 d\lambda(y) & -1 \leq x \leq 1 \\
 \displaystyle
 \int_\mathbb{R} \chi_{\intcc{-1,1}\cap\intcc{x-1,x+1}}(x) d\lambda(x) & \text{else}
-\end{cases}
+\end{cases} 
 \end{align*}
 
 Notice that the convolution operator has a natural smoothing effect on $f$, as it does on every function.
@@ -211,7 +211,52 @@ An \textbf{approximate identity} (as $\varepsilon \rightarrow 0$) is a family of
 \end{enumerate}
 \end{definition}
 
+\begin{theorem}
+Any approximate identity has the following two properties:
+\begin{enumerate}
+\item $f \in L^p(G) \wedge 1 \leq p < \infty \implies \norm{k_\epsilon \ast f - f}_{L^p(G)} \to 0 $ as $ \epsilon \to 0$
+\item $f \in L^\infty(G)$ uniformly continuous on $K \subset G \implies \norm{k_\epsilon \ast f - f}_{L^\infty(K)} \to 0$ as $\epsilon \to 0$ \\
+Furthermore, if $f$ is bounded and continuous at $x \in G$ then
+$ (k_\epsilon \ast )(x) \to f(x) $ as $\epsilon \to 0$ 
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Let us first prove the statement in finite $L^p$ spaces. We shall make use of the following equality:
+\begin{align*}
+\forall p \in \mathbb{N} : \abs{g(h^{-1}x) - g(x)}^p &\leq (\abs{g(h^{-1}x)}+\abs{g(x)})^p \\
+&\leq (ess.sup_x (\abs{g(h^{-1}x)} )+ess.sup_x(\abs{g(x)}) )^p \\
+&\leq (2\norm{g}_{L^\infty})^p
+
+\end{align*}
+\end{proof}
+
 \begin{example}
+
+A useful example of an approximate identity is the poison kernel on $\mathbb{R}$, defined as:
+
+\begin{align*}
+P(x) &:= (\pi(x^2+1))^{-1} \\
+P_\epsilon(x) &:= \epsilon^{-1}P(\epsilon^{-1}x)
+\end{align*}
+
+Notice first a convenience:
+
+\begin{align*}
+\norm{P(x)}_{L^1} &= \int_\mathbb{R} \frac{1}{\epsilon \pi (\frac{x^2}{\epsilon^2}+1)} \epsilon d\lambda(y) \\
+ZZZ
+\end{align*}
+
+From this it follows that 
+
+\end{example}
+
+\begin{example}
+Another example is the fejer kernel depicted below:
+\begin{align*}
+zz
+\end{align*}
+
 \begin{figure}[h!bt]
 \centering
 \includegraphics[width = \textwidth]{matlab/fejerkernel}
