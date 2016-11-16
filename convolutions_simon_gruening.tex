@@ -149,22 +149,25 @@ f \ast (g + h) &= \int_G f(y) (g+h)(y^{-1}x)d\lambda(y)\\
 The mirror statement follows analogously. 
 \end{proof}
 
+\begin{remark}
+\begin{proof} Notice the following trivial equality:\begin{align*}
+\norm{f}^{p/q}_{L^p} &= (( \int_G \abs{f(x)}^p d\lambda(x) )^{1/p} ) ^ {p/q} \\
+&= (\int_G \abs{f(x)}^p d\lambda(x) )^{1/q}
+\end{align*} \end{proof}
+\end{remark}
+
 \section{Basic Convolution Inequalities}
 
 \begin{definition}
-$ p' := p / (p-1) $
+Define $ p' := p / (p-1) $. To maintain our desired property in infinity we also declare: $1 / \infty = 0$
 \end{definition}
 
 \begin{remark}
-$ZZZZZZZZZZ$
+Notice then: $\frac{1}{p} + \frac{1}{p'} = \frac{1}{p} + \frac{p-1}{p} = \frac{p}{p} = 1$
 \end{remark}
 
-\begin{theorem}
-Minkowskis Inequality, triangle inequality for Lp spaces
-\end{theorem}
-
 \begin{remark}
-We can work with absolute value functions...ZZZ due to the triangle inequality:
+In the following proofs we often make use of this useful inequality without further explication, it allows us to manipulate inequalities without worrying about negatives:
 \begin{align*}
 f \ast g &= \int_G f(y)g(y^{-1}x) d\lambda(y) \\
 &\leq \abs{ \int_G f(y)g(y^{-1}x) d\lambda(y) } \\
@@ -173,17 +176,36 @@ f \ast g &= \int_G f(y)g(y^{-1}x) d\lambda(y) \\
 \end{align*}
 \end{remark}
 
+What follows is akin to the triangle inequality for $L^p$ spaces.
+
+\begin{theorem}
+Minkowskis Inequality: Let $1 \leq p \leq \infty$, $f \in L^p (G)$, $g \in L^1(G)$ then it follows that: 
+$g \ast f $exists $\lambda$-almost-everywhere and
+$ \norm{g \ast f}_{L^p(G)} \leq \norm{g}_{L^1(G)} \norm{f}_{L^p(G)} $
+\end{theorem}
+
 \begin{proof}
+First we shall inspect the easier case of $p=1$:
+ZZZZZZprooofZZZZ
 
-Case $p=1$:
-ZZZZ
-Case $p=\infty$:
-ZZZZ
 
-For $ 1 < p < \infty$, we 
+Similarly we may rid ourselves of the other easy case $p=\infty$:
+ZZZZproofZZZZ
+
+For $ 1 < p < \infty$, we must work a little harder. We have:
+\begin{equation*}
+(\abs{g} \ast \abs{f} )(x) = \int_G \abs{f(y^{-1}x)}\abs{g(y)} d\lambda(y)
+\end{equation*}
+We shall apply H\"olders inequality as follows ZZZ to recieve:
+\begin{equation*}
+(\abs{g} \ast \abs{f} )(x) \leq (\int_G \abs{f(y^{-1}x)}^p \abs{g(y)} d\lambda(y))^{1/p} (\int_G \abs{g(y)} d\lambda(y))^{1/p'}
+\end{equation*}
+
+Since we are insane ZZZZ we may take the $L^p$ norm on both sides while preserving the inequality.
 
 \begin{align*}
-ZZZ
+\norm{\abs{g} \ast \abs{f}}_{L^p} &= () \\
+&= blah
 \end{align*}
 
 \end{proof}
@@ -225,9 +247,8 @@ $ (k_\epsilon \ast )(x) \to f(x) $ as $\epsilon \to 0$
 Let us first prove the statement in finite $L^p$ spaces. We shall make use of the following equality:
 \begin{align*}
 \forall p \in \mathbb{N} : \abs{g(h^{-1}x) - g(x)}^p &\leq (\abs{g(h^{-1}x)}+\abs{g(x)})^p \\
-&\leq (ess.sup_x (\abs{g(h^{-1}x)} )+ess.sup_x(\abs{g(x)}) )^p \\
+&\leq (\esssup_x (\abs{g(h^{-1}x)} )+\esssup_x(\abs{g(x)}) )^p \\
 &\leq (2\norm{g}_{L^\infty})^p
-
 \end{align*}
 \end{proof}
 
