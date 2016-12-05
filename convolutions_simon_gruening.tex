@@ -250,6 +250,51 @@ Let us first prove the statement in finite $L^p$ spaces. We shall make use of th
 &\leq (\esssup_x (\abs{g(h^{-1}x)} )+\esssup_x(\abs{g(x)}) )^p \\
 &\leq (2\norm{g}_{L^\infty})^p
 \end{align*}
+Applying the Lebesgue Dominated Convergence theorem (*) we find:
+\begin{align*}
+\int_G \abs{g(h^{-1}x)-g(x)}^p d\lambda(x) \to 0 \text{ as } h \to e
+\end{align*}
+Where $e$ is the neutral element of $G$. In $\mathbb{R}^n$ this is simply $0$. We can approximate any $g \in L^p(G)$ with a continuous function $f$ with compact support. Thus the property still holds:
+\begin{align*}
+\int_G \abs{f(h^{-1}x)-f(x)}^p d\lambda(x) \to 0 \text{ as } h \to e
+\end{align*}
+However we can now say that since $f$ is continuous,
+\begin{equation}
+\delta > 0 : \exists V(e): h \in V(e) \implies \int_G \abs{f(h^{-1}x) - f(x)}^p d\lambda(x) < (\frac{\delta}{2})^p ( \frac{1}{c})
+\end{equation}
+Where $c*$, $V(e)$ is a neighborhood of $e$. We shall fix this neighborhood for later. We have picked the value on the right side for later convenience. As with most proofs in this area, we shall split the object of our analysis into two parts we can evaluate:
+\begin{align*}
+(k_\epsilon \ast f)(x) - f(x) &= \int_G (f(y^{-1}x)-f(x))k_\epsilon(y) d\lambda(y)
+\end{align*}
+We take $L^p$ norms on both sides. This preserves the equality since *.
+\begin{align*}
+\norm{(k_\epsilon \ast f)(x) - f(x)}_{L^p(G)} &= \norm{\int_G (f(y^{-1}x)-f(x))k_\epsilon(y) d\lambda(y)}_{L^p(G)} \\
+&= (\int_G \abs{\int_G (f(y^{-1}x)-f(x))k_\epsilon(y) d\lambda(y)}^p d\lambda(x) )^{\frac{1}{p}}\\
+&\leq (\int_G \int_G \abs{f(y^{-1}x)-f(x)}^p \abs{k_e(y)}  d\lambda(y) d\lambda(x) )^{\frac{1}{p}} \\
+&= (\int_G \int_V \abs{f(y^{-1}x)-f(x)}^p \abs{k_e(y)} d\lambda(y) d\lambda(x) 
++ \int_G \int_{V^c} \abs{f(y^{-1}x)-f(x)}^p \abs{k_e(y)} d\lambda(y) d\lambda(x) )^{\frac{1}{p}}
+\end{align*}
+Where the inequality originates from Jensen's inequality *. Notice that we can now inspect on $V$ and $V^c$, we shall call the respective parts of the function $F_V$ and $F_{V^c}$ such that our last statement can be rewritten as $ ( F_V + F_{V_c} )^{\frac{1}{p}}$ for convenience. We now look at them individually. 
+
+\begin{align*}
+F_V &= \int_G \int_V \abs{f(y^{-1}x)-f(x)}^p \abs{k_e(y)} d\lambda(y) d\lambda(x)\\
+&= \int_V \int_G \abs{f(y^{-1}x)-f(x)}^p \abs{k_e(y)} d\lambda(x) d\lambda(y)\\
+&= \int_V \int_G \abs{f(y^{-1}x)-f(x)}^p  d\lambda(x) \abs{k_e(y)} d\lambda(y)\\
+&\leq \int_V ( (\frac{\delta}{2c})^p \frac{1}{c} ) \abs{k_e(y)} d\lambda(y)\\
+&= ( (\frac{\delta}{2c})^p \frac{1}{c} ) \int_V  \abs{k_e(y)} d\lambda(y)\\
+&\leq ( (\frac{\delta}{2c})^p \frac{1}{c} ) \int_G  \abs{k_e(y)} d\lambda(y)\\
+&\leq ( (\frac{\delta}{2c})^p \frac{1}{c} ) c\\
+&= ( (\frac{\delta}{2c})^p )\\
+\end{align*}
+Here we have used Fubini *, substituted our previously discovered upper bound, and used property $(i)$ intrinsic of any approximate identity, as defined. We bound the other half now:
+
+\begin{align*}
+F_{V^p} &= \int_G \int_{V^c} \abs{f(y^{-1}x)-f(x)}^p \abs{k_\epsilon(y)} d\lambda(y) d\lambda(x) \\
+&= \int_{V^c} \int_{G} \abs{f(y^{-1}x)-f(x)}^p \abs{k_\epsilon(y)} d\lambda(x) d\lambda(y) \\
+&= \int_{V^c} \norm{f(y^{-1}x)-f(x)}^p_{L^p} \abs{k_\epsilon(y)} d\lambda(x) d\lambda(y) \\
+\end{align*}
+Were we have once again used Fubini *, the definition of our norm, ...*
+
 \end{proof}
 
 \begin{example}
@@ -265,7 +310,7 @@ Notice first a convenience:
 
 \begin{align*}
 \norm{P(x)}_{L^1} &= \int_\mathbb{R} \frac{1}{\epsilon \pi (\frac{x^2}{\epsilon^2}+1)} \epsilon d\lambda(y) \\
-ZZZ
+ZZZZ
 \end{align*}
 
 From this it follows that 
@@ -287,7 +332,7 @@ zz
 \end{example}
 
 \begin{theorem}
-approx. id. on locallz compact group G with left Haar measure
+approx. id. on locally compact group G with left Haar measure
 \end{theorem}
 
 \begin{theorem}
