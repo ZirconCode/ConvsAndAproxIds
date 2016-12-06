@@ -280,11 +280,11 @@ Where the inequality originates from Jensen's inequality *. Notice that we can n
 F_V &= \int_G \int_V \abs{f(y^{-1}x)-f(x)}^p \abs{k_e(y)} d\lambda(y) d\lambda(x)\\
 &= \int_V \int_G \abs{f(y^{-1}x)-f(x)}^p \abs{k_e(y)} d\lambda(x) d\lambda(y)\\
 &= \int_V \int_G \abs{f(y^{-1}x)-f(x)}^p  d\lambda(x) \abs{k_e(y)} d\lambda(y)\\
-&\leq \int_V ( (\frac{\delta}{2c})^p \frac{1}{c} ) \abs{k_e(y)} d\lambda(y)\\
-&= ( (\frac{\delta}{2c})^p \frac{1}{c} ) \int_V  \abs{k_e(y)} d\lambda(y)\\
-&\leq ( (\frac{\delta}{2c})^p \frac{1}{c} ) \int_G  \abs{k_e(y)} d\lambda(y)\\
-&\leq ( (\frac{\delta}{2c})^p \frac{1}{c} ) c\\
-&= ( (\frac{\delta}{2c})^p )\\
+&\leq \int_V ( (\frac{\delta}{2})^p \frac{1}{c} ) \abs{k_e(y)} d\lambda(y)\\
+&= ( (\frac{\delta}{2})^p \frac{1}{c} ) \int_V  \abs{k_e(y)} d\lambda(y)\\
+&\leq ( (\frac{\delta}{2})^p \frac{1}{c} ) \int_G  \abs{k_e(y)} d\lambda(y)\\
+&\leq ( (\frac{\delta}{2})^p \frac{1}{c} ) c\\
+&= ( (\frac{\delta}{2})^p )\\
 \end{align*}
 Here we have used Fubini *, substituted our previously discovered upper bound, and used property $(i)$ intrinsic of any approximate identity, as defined. We bound the other half now:
 
@@ -292,10 +292,62 @@ Here we have used Fubini *, substituted our previously discovered upper bound, a
 F_{V^p} &= \int_G \int_{V^c} \abs{f(y^{-1}x)-f(x)}^p \abs{k_\epsilon(y)} d\lambda(y) d\lambda(x) \\
 &= \int_{V^c} \int_{G} \abs{f(y^{-1}x)-f(x)}^p \abs{k_\epsilon(y)} d\lambda(x) d\lambda(y) \\
 &= \int_{V^c} \norm{f(y^{-1}x)-f(x)}^p_{L^p} \abs{k_\epsilon(y)} d\lambda(x) d\lambda(y) \\
+&\leq \int_{V^c} (\norm{f}^p_{L^p}+\norm{f}^p_{L^p}) \abs{k_\epsilon(y)} d\lambda(x) d\lambda(y) \\
+&= \int_{V^c} (2\norm{f}^p_{L^p}) \abs{k_\epsilon(y)} d\lambda(x) d\lambda(y) \\
+&= (2\norm{f}^p_{L^p}) \int_{V^c} \abs{k_\epsilon(y)} d\lambda(x) d\lambda(y) \\
+&\leq (2\norm{f}^p_{L^p}) \int_{V^c} \abs{k_\epsilon(y)} d\lambda(x) d\lambda(y) \\
+ZZZ \\
+&\leq ( (\frac{\delta}{2})^p )
 \end{align*}
-Were we have once again used Fubini *, the definition of our norm, ...*
+Were we have once again used Fubini *, the definition of our norm, minkowski's *, and have choosen a correct neighborhood $V^c$... *. Putting our function back together we find:
 
+\begin{align*}
+(F_V + F_{V^c}) &\leq (\frac{\delta}{2})^p + (\frac{\delta}{2})^p ) ^{\frac{1}{p}}\\
+&\leq (\frac{\delta}{2})+(\frac{\delta}{2}))\\
+&= \delta\\
+\end{align*}
+
+Where the final inequality follows from the fact that $p \geq 1 \implies \frac{1}{p} \leq 1$ and Ex. 1.1.4 from the previous section. We have proven property $(1)$ of our theorem since the norm becomes arbitrarily small and thus converges to 0.
+
+We shall no prove the case of $ p = \infty$. First we prepare some ingredients. We have required that f is bounded and uniformly continuous. Recall:
+
+\begin{align*}
+f \text{uniformly continuous} \implies \delta > 0 : \forall  V(e): \abs{f(y^{-1}x)-f(x)} < \frac{\delta}{2c}
+\end{align*}
+
+Furthermore from property $(iii)$ of an approximate identity we have:
+
+\begin{align*}
+\exists \epsilon_0 > 0 : \forall \epsilon \in (0,\epsilon_0): \int_{V^c} \abs{k_\epsilon(y)} d\lambda(y) \leq \frac{\delta}{2(\norm{f}_{L^\infty}+1)}
+\end{align*}
+
+Once more we shall split our normed function:
+
+\begin{align*}
+\norm{k_\epsilon \ast f -f}_{L^\infty}(G) &= \sup_{x\in G} \abs{(k_\epsilon \ast f)(x)-f(x)} \\
+&= \sup_{x\in G} \abs{\int_G f(y^{-1}x)-f(x) k_\epsilon(y) d\lambda(y)}\\
+&= \sup_{x\in G} \abs{\int_V f(y^{-1}x)-f(x) k_\epsilon(y) d\lambda(y) + \int_{V^c} f(y^{-1}x)-f(x) k_\epsilon(y) d\lambda(y)}\\
+&\leq \sup_{x\in G} \abs{\int_V f(y^{-1}x)-f(x) k_\epsilon(y) d\lambda(y)} + \abs{\int_{V^c} f(y^{-1}x)-f(x) k_\epsilon(y) d\lambda(y)} \\
+&\leq \sup_{x\in G} \abs{\int_V f(y^{-1}x)-f(x) k_\epsilon(y) d\lambda(y)} + \sup_{x\in G} \abs{\int_{V^c} f(y^{-1}x)-f(x) k_\epsilon(y) d\lambda(y)} \\
+&\leq \sup_{x\in G} \int_V \abs{f(y^{-1}x)-f(x)}\abs{ k_\epsilon(y) d\lambda(y)} + \sup_{x\in G} \int_{V^c}\abs{ f(y^{-1}x)-f(x)}\abs{ k_\epsilon(y) d\lambda(y)}\\
+&\leq  \int_V \sup_{x\in G}\abs{f(y^{-1}x)-f(x)}\abs{ k_\epsilon(y) d\lambda(y)} +  \int_{V^c}\sup_{x\in G}\abs{ f(y^{-1}x)-f(x)}\abs{ k_\epsilon(y) d\lambda(y)}\\
+&\leq  \int_V (\frac{\delta}{2c}) \abs{ k_\epsilon(y) d\lambda(y)} +  \int_{V^c}\sup_{x\in G}\abs{ f(y^{-1}x)-f(x)}\abs{ k_\epsilon(y) d\lambda(y)}\\
+&\leq (\frac{\delta}{2c}) \int_V  \abs{ k_\epsilon(y) d\lambda(y)} +  \int_{V^c}\sup_{x\in G}\abs{ f(y^{-1}x)-f(x)}\abs{ k_\epsilon(y) d\lambda(y)}\\
+&\leq (\frac{\delta}{2c}) \int_G  \abs{ k_\epsilon(y) d\lambda(y)} +  \int_{V^c}\sup_{x\in G}\abs{ f(y^{-1}x)-f(x)}\abs{ k_\epsilon(y) d\lambda(y)}\\
+&\leq (\frac{\delta}{2c}) c +  \int_{V^c}\sup_{x\in G}\abs{ f(y^{-1}x)-f(x)}\abs{ k_\epsilon(y) d\lambda(y)}\\
+&= (\frac{\delta}{2}) +  \int_{V^c}\sup_{x\in G}\abs{ f(y^{-1}x)-f(x)}\abs{ k_\epsilon(y) d\lambda(y)}\\
+*\\
+\leq \frac{\delta}{2} + \frac{\delta}{2}
+\leq \delta
+\end{align*}
+Here we have normed our required equality, split the integral into neighborhood and complement, used the triangle inequality,   and applied previous definitions and preparatory discoveries *. Note at the end we have added one case of 0 *.
+
+This concludes the proof of both parts.
 \end{proof}
+
+Note small variation of previous theorem: proof follows analogously blah blah *
+
+
 
 \begin{example}
 
@@ -310,7 +362,7 @@ Notice first a convenience:
 
 \begin{align*}
 \norm{P(x)}_{L^1} &= \int_\mathbb{R} \frac{1}{\epsilon \pi (\frac{x^2}{\epsilon^2}+1)} \epsilon d\lambda(y) \\
-ZZZZ
+ZZZ
 \end{align*}
 
 From this it follows that 
