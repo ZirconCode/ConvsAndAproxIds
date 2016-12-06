@@ -204,9 +204,16 @@ We shall apply H\"olders inequality as follows ZZZ to recieve:
 Since we are insane ZZZZ we may take the $L^p$ norm on both sides while preserving the inequality.
 
 \begin{align*}
-\norm{\abs{g} \ast \abs{f}}_{L^p} &= () \\
-&= blah
+\norm{\abs{g} \ast \abs{f}}_{L^p} &\leq (\norm{g}^{p-1}_{L^1} \int_G \int_G \abs{f(y^{-1}x)}^p \abs{g(y)} d\lambda(y)d\lambda(x) )^\frac{1}{p} \\
+&= (\norm{g}^{p-1}_{L^1} \int_G \int_G \abs{f(y^{-1}x)}^p \abs{g(y)} d\lambda(x)d\lambda(y) )^\frac{1}{p} \\
+&= (\norm{g}^{p-1}_{L^1} \int_G \int_G \abs{f(y^{-1}x)}^p  d\lambda(x) \abs{g(y)} d\lambda(y) )^\frac{1}{p} \\
+&= (\norm{g}^{p-1}_{L^1} \int_G \int_G \abs{f(x)}^p  d\lambda(x) \abs{g(y)} d\lambda(y) )^\frac{1}{p} \\
+&= (\norm{g}^{p-1}_{L^1} \norm{f}^p_{L^p} \norm{g}_{L^1})^\frac{1}{p} \\
+&= (\norm{g}^{p}_{L^1} \norm{f}^p_{L^p})^\frac{1}{p} \\
+&< \infty
 \end{align*}
+
+This implies that $\abs{g}\ast\abs{f}$ is finite $\lambda$-a.e. which implies *. Missing steps *.
 
 \end{proof}
 
@@ -214,6 +221,9 @@ Since we are insane ZZZZ we may take the $L^p$ norm on both sides while preservi
 Youngs Inequality
 \end{theorem}
 
+\begin{proof}
+We work with $\abs{f} \ast \abs{g}$ as before. 
+\end{proof}
 
 \begin{theorem}
 Youngs Inequality for Weak Type Spaces
