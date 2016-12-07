@@ -356,12 +356,27 @@ This concludes the proof of both parts.
 \end{proof}
 
 \begin{theorem}
-Note small variation of previous theorem: *
+Let $k_\epsilon$ be an approximate identity with a slight variation, instead of satisfying property $(ii)$ is satisfies:
+
+\begin{align*}
+(ii)' :\Leftrightarrow a\in \mathbb{C} \wedge \forall \epsilon > 0 : \int_G k_\epsilon(x) d\lambda(x) = a 
+\end{align*}
+
+then similarly the following is true:
+
+\begin{enumerate}
+\item $f \in L^p(G) \wedge 1 \leq p < \infty \implies \norm{k_\epsilon \ast f - af}_{L^p(G)} \to 0 $ as $ \epsilon \to 0$
+\item $f \in L^\infty(G)$ uniformly continuous on $K \subset G $such that 
+\begin{align*}
+\forall \delta>0: \exists V(e): sup_{x\in G}sup_{y \in V(e)}\abs{f(y^{-1}x)-f(x)}\leq \delta
+\end{align*}
+ then $ \norm{k_\epsilon \ast f - af}_{L^\infty(K)} \to 0$ as $\epsilon \to 0$  
+\end{enumerate}
+
 \end{theorem}
 
 \begin{proof}
- proof follows analogously blah blah *
-\end{proof}
+The proof is analogous to the previous proof, working with $a$ instead of $1$.\end{proof}
 
 
 \begin{example}
@@ -383,6 +398,10 @@ ZZZ
 From this it follows that 
 
 \end{example}
+
+\begin{example}
+It is possible to state a more general version form for an approximate identity which contains the Poisson kernel. 
+\end{example
 
 \begin{example}
 Another example is the fejer kernel depicted below:
