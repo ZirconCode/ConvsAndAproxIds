@@ -391,17 +391,36 @@ P_\epsilon(x) &:= \epsilon^{-1}P(\epsilon^{-1}x)
 Notice first a convenience:
 
 \begin{align*}
-\norm{P(x)}_{L^1} &= \int_\mathbb{R} \frac{1}{\epsilon \pi (\frac{x^2}{\epsilon^2}+1)} \epsilon d\lambda(y) \\
-ZZZ
+\norm{P(x)}_{L^1} &= \int_\mathbb{R} \abs{\frac{1}{ \pi (x^2+1)} } d\lambda(x) \\
+&= \int_\mathbb{R} \frac{1}{ \pi (x^2+1)} d\lambda(x) \\
+&= \int_\mathbb{R} \frac{1}{\epsilon(\pi (\frac{x}{\epsilon})^2+1)} d\lambda(x)\\
+&= \int_\mathbb{R} \abs{ \frac{1}{\epsilon(\pi (\frac{x}{\epsilon})^2+1)}} d\lambda(x)\\
+&= \norm{P_\epsilon(x)}_{L^1}
 \end{align*}
 
-From this it follows that 
+By a change of variables $x$ to $\frac{x}{\epsilon}$ and noticing that the function is positive. With this insight we can prove required property $(i)$ and $(ii)$:
+\begin{align*}
+\int_\mathbb{R} \frac{1}{\pi(x^2+1)} d\lambda(x) &= \int_{-\infty}^{+\infty} \frac{1}{\pi(x^2+1)} dx \\
+&= \lim_{a\to +\infty} \int_{-a}^{+a} \frac{1}{\pi(x^2+1)} dx \\
+&= \lim_{a\to +\infty} \frac{1}{\pi}( \arctan(x) \vert_{-a}^{+a}) \\
+&= \lim_{a\to +\infty} \frac{1}{\pi} (\arctan(a) - \arctan(-a)) \\
+&= \frac{1}{\pi} (\frac{\pi}{2} - (- \frac{\pi}{2})) \\
+&= 1
+\end{align*}
+
+Proving property $(ii)$. Notice that $(ii) \wedge (k_\epsilon \leq 0) \implies (i)$ on $\mathbb{R}$. To prove $(iii)$ we notice that $V^c(e)$ on $\mathbb{R}$ is simply the set $\cbr{ x \in \mathbb{R} : \abs{x} \geq \delta}$ for some $\delta > 0$. We integrate:
+
+\begin{align*}
+\int_{\cbr{ x \in \mathbb{R} : \abs{x} \geq \delta}} \abs{P_\epsilon} d\lambda(x) &= \int_{\cbr{ x \in \mathbb{R} : \abs{x} \geq \delta}} \abs{\frac{1}{\epsilon}\frac{1}{\pi((\frac{x}{\epsilon})^2+1)}} d\lambda(x) \\
+&= \frac{1}{\pi} \int_{\cbr{ x \in \mathbb{R} : \abs{x} \geq \delta}} \abs{\frac{1}{\epsilon}\frac{1}{((\frac{x}{\epsilon})^2+1)}} d\lambda(x)\\
+zzz
+\end{align*}
 
 \end{example}
 
 \begin{example}
 It is possible to state a more general version form for an approximate identity which contains the Poisson kernel. 
-\end{example
+\end{example}
 
 \begin{example}
 Another example is the fejer kernel depicted below:
