@@ -414,13 +414,16 @@ Proving property $(ii)$. Notice that $(ii) \wedge (k_\epsilon \leq 0) \implies (
 \int_{\cbr{ x \in \mathbb{R} : \abs{x} \geq \delta}} \abs{P_\epsilon} d\lambda(x) &= \int_{\cbr{ x \in \mathbb{R} : \abs{x} \geq \delta}} \abs{\frac{1}{\epsilon}\frac{1}{\pi((\frac{x}{\epsilon})^2+1)}} d\lambda(x) \\
 &= \frac{1}{\pi} \int_{\cbr{ x \in \mathbb{R} : \abs{x} \geq \delta}} \abs{\frac{1}{\epsilon}\frac{1}{((\frac{x}{\epsilon})^2+1)}} d\lambda(x)\\
 zzz
+&= 1 - \frac{2}{\pi} \arctan(\frac{\delta}{\epsilon})
 \end{align*}
 
+Which goes to $0$ as $\epsilon \to 0$ since $\arctan(\frac{\delta}{\epsilon}) \to \frac{\pi}{2}$. Thus we have shown that the Poisson kernel is an approximate identity.
+
 \end{example}
 
-\begin{example}
-It is possible to state a more general version form for an approximate identity which contains the Poisson kernel. 
-\end{example}
+\begin{remark}
+It is possible to state a more general form on $\mathbb{R}^n$ for an approximate identity which contains the Poisson kernel. Let: *
+\end{remark}
 
 \begin{example}
 Another example is the fejer kernel depicted below:
