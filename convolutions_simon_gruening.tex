@@ -261,25 +261,50 @@ We shall make use of these lovely final 2 statements in what follows to split ou
 
 \begin{align*}
 \abs{(\abs{f}\ast \abs{g})(x)} &\leq \int_G \abs{f(y)}\abs{g(y^{-1}x)} d\lambda(y) \\
-&= \int_G \abs{f(y)}^\frac{p}{r'}\abs{f(y)}^\frac{p}{q}\abs{g(y^{-1}x)}^\frac{r}{q}\abs{g(y^{-1}x)}^\frac{r}{p'} d\lambda(y)
+&= \int_G \abs{f(y)}^\frac{p}{r'}\abs{f(y)}^\frac{p}{q}\abs{g(y^{-1}x)}^\frac{r}{q}\abs{g(y^{-1}x)}^\frac{r}{p'} d\lambda(y) \\
+&= \norm{f(y)^\frac{p}{r'} f(y)^\frac{p}{q} g(y^{-1}x)^\frac{r}{q}g(y^{-1}x)^\frac{r}{p'}}_{L^1}
 \end{align*}
 
 To proceed we shall now make use of H\"older's inducted inequality (Exercise 1.1.2(a)) for multiple exponents  with:
 \begin{description}
 [align=right,labelwidth=3cm]
 \item [Measure] Simply $d\lambda(y)$
-\item [Functions] $\abs{f(y)}^\frac{p}{r'}$, $\abs{g(y^{-1}x}^\frac{r}{p'}$, and combining the rest, $\abs{f(y)}^\frac{p}{q}\abs{g(y^{-1}x)}^\frac{r}{q}$
+\item [Functions] $\abs{f(y)}^\frac{p}{r'}$, $\abs{g(y^{-1}x}^\frac{r}{p'}$, and by combining the rest, $\abs{f(y)}^\frac{p}{q}\abs{g(y^{-1}x)}^\frac{r}{q}$
 \item [Exponents] $r'$, $q$, and $p'$. See our first discovery above.
 \end{description}
-\end{proof}
+
 
 To receive:
 
 \begin{align*}
-ZZZZ &\leq ZZZ \\
+\norm{f(y)^\frac{p}{r'} f(y)^\frac{p}{q} g(y^{-1}x)^\frac{r}{q}g(y^{-1}x)^\frac{r}{p'}}_{L^1} &\leq \norm{f(y)^\frac{p}{r'}}_{L^{r'}} \norm{f(y)^\frac{p}{q} g(y^{-1}x)^\frac{r}{q}}_{L^q} \norm{g(y^{-1}x)^\frac{r}{p'}}_{L^{p'}} \\
+&= (\int_G \abs{f(y)^\frac{p}{r'}}^{r'} d\lambda(y))^\frac{1}{r'} \norm{f(y)^\frac{p}{q} g(y^{-1}x)^\frac{r}{q}}_{L^q} \norm{g(y^{-1}x)^\frac{r}{p'}}_{L^{p'}} \\
+&= (\int_G \abs{f(y)^p} d\lambda(y))^\frac{1}{r'} \norm{f(y)^\frac{p}{q} g(y^{-1}x)^\frac{r}{q}}_{L^q} \norm{g(y^{-1}x)^\frac{r}{p'}}_{L^{p'}} \\
+&= \norm{f}^\frac{p}{r'}_{L^p} \norm{f(y)^\frac{p}{q} g(y^{-1}x)^\frac{r}{q}}_{L^q} \norm{g(y^{-1}x)^\frac{r}{p'}}_{L^{p'}} \\
+&= \norm{f}^\frac{p}{r'}_{L^p} \norm{f(y)^\frac{p}{q} g(y^{-1}x)^\frac{r}{q}}_{L^q} (\int_G ( \abs{g(y^{-1}x)}^\frac{r}{p'})^{p'} d\lambda(y) )^\frac{1}{p'} \\
+&= \norm{f}^\frac{p}{r'}_{L^p} \norm{f(y)^\frac{p}{q} g(y^{-1}x)^\frac{r}{q}}_{L^q} (\int_G  \abs{g(y^{-1}x)}^r d\lambda(y) )^\frac{1}{p'} \\
+&= \norm{f}^\frac{p}{r'}_{L^p} (\int_G (\abs{f(y)^\frac{p}{q} g(y^{-1}x)^\frac{r}{q}} )^q)^\frac{1}{q} (\int_G  \abs{g(y^{-1}x)}^r d\lambda(y) )^\frac{1}{p'} \\
 &= \norm{f}^\frac{p}{r'}_{L^p} (\int_G \abs{f(y)}^p\abs{g(y^{-1}x)}^r d\lambda(y) )^\frac{1}{q} (\int_G \abs{g(y^{-1}x)}^r d\lambda(y) )^\frac{1}{p'} \\
-&= Z
+&= \norm{f}^\frac{p}{r'}_{L^p} (\int_G \abs{f(y)}^p\abs{g(y^{-1}x)}^r d\lambda(y) )^\frac{1}{q} (\int_G \abs{g(y^{-1})}^r d\lambda(y) )^\frac{1}{p'} \\
+&= \norm{f}^\frac{p}{r'}_{L^p} (\int_G \abs{f(y)}^p\abs{g(y^{-1}x)}^r d\lambda(y) )^\frac{1}{q} \norm{g}^\frac{r}{p'}_{L^r} \\
+&= (\int_G \abs{f(y)}^p\abs{g(y^{-1}x)}^r d\lambda(y) )^\frac{1}{q} \norm{g}^\frac{r}{p'}_{L^r} \norm{f}^\frac{p}{r'}_{L^p}
 \end{align*}
+
+Where, in the final calculating step, we have made use of the fact that we are integrating over everything and the abelian property of our topological group \footnote{Note however that this can also be proven without the abelian property, albeit with a few minor prerequisites.}.
+We now once more take the $L^q$ norm of the inequality since everything is absolute and thus the inequality will be preserved. Notice we shall take the norm in $x$, respecting the parameter of our convolution whilst preserving the two other norms:
+
+\begin{align*}
+\norm{\abs{f} \ast \abs{g}}_{L^q} &\leq (\int_G \abs{(\int_G \abs{f(y)}^p\abs{g(y^{-1}x)}^r d\lambda(y) )^\frac{1}{q}}^q d\lambda(x))^\frac{1}{q} \norm{g}^\frac{r}{p'}_{L^r} \norm{f}^\frac{p}{r'}_{L^p} \\
+&= (\int_G\int_G \abs{f(y)}^p\abs{g(y^{-1}x)}^r d\lambda(x)) d\lambda(y) )^\frac{1}{q} \norm{g}^\frac{r}{p'}_{L^r} \norm{f}^\frac{p}{r'}_{L^p} \\
+&= (\int_G\int_G \abs{g(y^{-1}x)}^r d\lambda(x) \abs{f(y)}^p d\lambda(y)  )^\frac{1}{q} \norm{g}^\frac{r}{p'}_{L^r} \norm{f}^\frac{p}{r'}_{L^p} \\
+&= (\int_G \abs{g(x)}^r d\lambda(x) \int_G \abs{f(y)}^p d\lambda(y)  )^\frac{1}{q} \norm{g}^\frac{r}{p'}_{L^r} \norm{f}^\frac{p}{r'}_{L^p} \\
+&= \norm{g}^\frac{r}{q}_{L^r} \norm{f}^\frac{p}{q}_{L^p} \norm{g}^\frac{r}{p'}_{L^r} \norm{f}^\frac{p}{r'}_{L^p} \\
+&= \norm{g}_{L^r} \norm{f}_{L^p} \\
+&< \infty
+\end{align*}  
+
+As in Minkowski's Proof previously, we conclude $f \ast g$ exists $\lambda$-a.e. and satisfies the theorem.
+\end{proof}
 
 \begin{theorem}
 Youngs Inequality for Weak Type Spaces
