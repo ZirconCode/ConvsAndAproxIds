@@ -250,15 +250,36 @@ and $f \in L^p \wedge g\in L^r$. Then $f \ast g$ exists $\lambda$-a.e and the fo
 \begin{proof}
 First we shall rid ourselves of the case $r = \infty$. We notice that then $ p = 1 \wedge q = \infty $ follows by satisfaction of the requirements. This case then simply follows from Minkowski's Inequality.
 
-Therefore let us now assume $ r < \infty$. We examine first the relationship between $p,q,r$:
+Therefore let us now assume $ r < \infty$. We examine first the beautiful relationship between $p,q,r$:
 
 \begin{enumerate}
 \item $1+\frac{1}{q} = \frac{1}{r}+\frac{1}{p} \Leftrightarrow 1-\frac{1}{r}+\frac{1}{q}+1-\frac{1}{p} = 1 \Leftrightarrow \frac{r-1}{r}+\frac{1}{q}+\frac{p-1}{p}=1 \Leftrightarrow \frac{1}{r/(r-1)}+\frac{1}{q}+\frac{1}{p/(p-1)}=1 \Leftrightarrow \frac{1}{r'}+\frac{1}{q}+\frac{1}{p'} =1$
-\item other
+\item $ \frac{1}{q}+1=\frac{1}{r}+\frac{1}{p} \Leftrightarrow \frac{p}{q}+p=\frac{p}{r}+1 \Leftrightarrow \frac{p}{q}+p-\frac{p}{r}=1 \Leftrightarrow \frac{p}{q}+\frac{p(r-1)}{r}=1 \Leftrightarrow \frac{p}{q}+\frac{p}{r/(r-1)}=1 \Leftrightarrow \frac{p}{q}+\frac{p}{r'}=1$
+\item $ \frac{1}{q}+1 = \frac{1}{p}+\frac{1}{r} \Leftrightarrow \frac{1}{q}+1-\frac{1}{p}=\frac{1}{r} \Leftrightarrow \frac{r}{q}+r-\frac{r}{p}=1 \Leftrightarrow \frac{r}{q}+\frac{r(p-1)}{p}=1 \Leftrightarrow \frac{r}{q}+\frac{r}{p/(p-1)}=1 \Leftrightarrow \frac{r}{q}+\frac{r}{p'}=1$
 \end{enumerate}
+We shall make use of these lovely final 2 statements in what follows to split our terms into more suitable pieces. We work with $\abs{f} \ast \abs{g}$ as before:
 
-We work with $\abs{f} \ast \abs{g}$ as before. 
+\begin{align*}
+\abs{(\abs{f}\ast \abs{g})(x)} &\leq \int_G \abs{f(y)}\abs{g(y^{-1}x)} d\lambda(y) \\
+&= \int_G \abs{f(y)}^\frac{p}{r'}\abs{f(y)}^\frac{p}{q}\abs{g(y^{-1}x)}^\frac{r}{q}\abs{g(y^{-1}x)}^\frac{r}{p'} d\lambda(y)
+\end{align*}
+
+To proceed we shall now make use of H\"older's inducted inequality (Exercise 1.1.2(a)) for multiple exponents  with:
+\begin{description}
+[align=right,labelwidth=3cm]
+\item [Measure] Simply $d\lambda(y)$
+\item [Functions] $\abs{f(y)}^\frac{p}{r'}$, $\abs{g(y^{-1}x}^\frac{r}{p'}$, and combining the rest, $\abs{f(y)}^\frac{p}{q}\abs{g(y^{-1}x)}^\frac{r}{q}$
+\item [Exponents] $r'$, $q$, and $p'$. See our first discovery above.
+\end{description}
 \end{proof}
+
+To receive:
+
+\begin{align*}
+ZZZZ &\leq ZZZ \\
+&= \norm{f}^\frac{p}{r'}_{L^p} (\int_G \abs{f(y)}^p\abs{g(y^{-1}x)}^r d\lambda(y) )^\frac{1}{q} (\int_G \abs{g(y^{-1}x)}^r d\lambda(y) )^\frac{1}{p'} \\
+&= Z
+\end{align*}
 
 \begin{theorem}
 Youngs Inequality for Weak Type Spaces
