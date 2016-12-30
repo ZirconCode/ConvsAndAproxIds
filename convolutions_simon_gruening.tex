@@ -196,32 +196,67 @@ For $ 1 < p < \infty$, we must work a little harder. We have:
 \begin{equation*}
 (\abs{g} \ast \abs{f} )(x) = \int_G \abs{f(y^{-1}x)}\abs{g(y)} d\lambda(y)
 \end{equation*}
-We shall apply H\"olders inequality as follows ZZZ to recieve:
-\begin{equation*}
-(\abs{g} \ast \abs{f} )(x) \leq (\int_G \abs{f(y^{-1}x)}^p \abs{g(y)} d\lambda(y))^{1/p} (\int_G \abs{g(y)} d\lambda(y))^{1/p'}
-\end{equation*}
+We shall apply H\"olders inequality with the to following criteria,
 
-Since we are insane ZZZZ we may take the $L^p$ norm on both sides while preserving the inequality.
+\begin{description}
+[align=right,labelwidth=3cm]
+\item [Measure] $\abs{g(y)} d\lambda(y)$
+\item [Functions] $1$ and $\abs{f(y^{-1}x)}$
+\item [Exponents] $p$ and $p'$ since $\frac{1}{p}+\frac{1}{p'} = 1$
+\end{description}
+
+to discover:
 
 \begin{align*}
-\norm{\abs{g} \ast \abs{f}}_{L^p} &\leq (\norm{g}^{p-1}_{L^1} \int_G \int_G \abs{f(y^{-1}x)}^p \abs{g(y)} d\lambda(y)d\lambda(x) )^\frac{1}{p} \\
+(\abs{g} \ast \abs{f} )(x) &\leq (\int_G \abs{f(y^{-1}x)}^p \abs{g(y)} d\lambda(y))^{1/p} (\int_G 1^{p'} \abs{g(y)} 
+ d\lambda(y))^{1/p'} \\
+ &= (\int_G \abs{f(y^{-1}x)}^p \abs{g(y)} d\lambda(y))^{1/p} (\int_G \abs{g(y)} 
+ d\lambda(y))^{1/p'}
+\end{align*}
+
+Since we are working with positive functions, by the monotonicity of the exponent and the integral, we may take the $L^p$ norm on both sides while preserving the inequality.
+
+\begin{align*}
+\norm{\abs{g} \ast \abs{f}}_{L^p} &\leq
+(\norm{g}^{p-1}_{L^1} \int_G \int_G \abs{f(y^{-1}x)}^p \abs{g(y)} d\lambda(y)d\lambda(x) )^\frac{1}{p} (ZZZZZZZZZZ) \\
+&= (\norm{g}^{p-1}_{L^1} \int_G \int_G \abs{f(y^{-1}x)}^p \abs{g(y)} d\lambda(y)d\lambda(x) )^\frac{1}{p} \\
 &= (\norm{g}^{p-1}_{L^1} \int_G \int_G \abs{f(y^{-1}x)}^p \abs{g(y)} d\lambda(x)d\lambda(y) )^\frac{1}{p} \\
 &= (\norm{g}^{p-1}_{L^1} \int_G \int_G \abs{f(y^{-1}x)}^p  d\lambda(x) \abs{g(y)} d\lambda(y) )^\frac{1}{p} \\
 &= (\norm{g}^{p-1}_{L^1} \int_G \int_G \abs{f(x)}^p  d\lambda(x) \abs{g(y)} d\lambda(y) )^\frac{1}{p} \\
+&= (\norm{g}^{p-1}_{L^1} \int_G \abs{f(x)}^p  d\lambda(x) \int_G  \abs{g(y)} d\lambda(y) )^\frac{1}{p} \\
 &= (\norm{g}^{p-1}_{L^1} \norm{f}^p_{L^p} \norm{g}_{L^1})^\frac{1}{p} \\
 &= (\norm{g}^{p}_{L^1} \norm{f}^p_{L^p})^\frac{1}{p} \\
+&= \norm{g}_{L^1} \norm{f}_{L^p}\\
 &< \infty
 \end{align*}
 
-This implies that $\abs{g}\ast\abs{f}$ is finite $\lambda$-a.e. which implies *. Missing steps *.
+This implies that $\abs{g}\ast\abs{f}$ is finite $\lambda$-a.e. and satisfies the required inequality. We have shown before that $ g \ast f \leq \abs{g}\ast\abs{f}$ which concludes our proof.
 
 \end{proof}
 
+We shall find that we can prove this same inequality in a more general case, strengthening our tool set by a lot.
+
 \begin{theorem}
-Youngs Inequality
+Young's Inequality: Let $1 \leq p,q,r \leq \infty$ such that
+\begin{equation*}
+\frac{1}{q} + 1 = \frac{1}{p}+\frac{1}{r}
+\end{equation*}
+and $f \in L^p \wedge g\in L^r$. Then $f \ast g$ exists $\lambda$-a.e and the following inequality holds:
+\begin{equation*}
+\norm{f \ast g}_{L^q} \leq \norm{g}_{L^r}\norm{f}_{L^p}
+\end{equation*}
 \end{theorem}
 
 \begin{proof}
+First we shall rid ourselves of the case $r = \infty$. We notice that then $ p = 1 \wedge q = \infty $ follows by satisfaction of the requirements. This case then simply follows from Minkowski's Inequality.
+
+Therefore let us now assume $ r < \infty$. We examine first the relationship between $p,q,r$:
+
+\begin{enumerate}
+\item $1+\frac{1}{q} = \frac{1}{r}+\frac{1}{p} \Leftrightarrow 1-\frac{1}{r}+\frac{1}{q}+1-\frac{1}{p} = 1 \Leftrightarrow \frac{r-1}{r}+\frac{1}{q}+\frac{p-1}{p}=1 \Leftrightarrow \frac{1}{r/(r-1)}+\frac{1}{q}+\frac{1}{p/(p-1)}=1 \Leftrightarrow \frac{1}{r'}+\frac{1}{q}+\frac{1}{p'} =1$
+\item other
+\end{enumerate}
+
 We work with $\abs{f} \ast \abs{g}$ as before. 
 \end{proof}
 
