@@ -6,7 +6,6 @@
 \address[Simon Gr\"uning]{University of Zurich, R\"{a}mistrasse 71, 8006 Zurich}
 \email[Simon Gr\"uning]{\href{mailto:simon.gruening@uzh.ch}{simon.gruening@uzh.ch}}
 
-
 \maketitle
 
 
@@ -532,7 +531,7 @@ Which goes to $0$ as $\epsilon \to 0$ since $\arctan(\frac{\delta}{\epsilon}) \t
 
 \begin{figure}[h!bt]
 \centering
-\includegraphics[width = \textwidth]{matlab/poissonkernel}
+\includegraphics[scale=0.7]{matlab/poissonkernel}
 \caption{Poisson Kernel}
 \label{fejer}
 \end{figure}
@@ -540,54 +539,35 @@ Which goes to $0$ as $\epsilon \to 0$ since $\arctan(\frac{\delta}{\epsilon}) \t
 \end{example}
 
 \begin{remark}
-It is possible to state a more general form on $\mathbb{R}^n$ for an approximate identity which contains the Poisson kernel. Let: *
+It is possible to state a more general form on $\mathbb{R}^n$ for an approximate identity which contains the Poisson kernel. Let $\int_{\mathbb{R}^n} k(x) = 1$ and define $k_\epsilon(x) = \epsilon^{-n}k(\epsilon^{-1}x)$. We see $k_\epsilon$ is an approximate identity by a similar notion to the proof of the Poisson kernel.
 \end{remark}
 
 \begin{example}
-Another example is the fejer kernel depicted below:
-\begin{align*}
-zz
-\end{align*}
+Another example of an approximate identity is the Fejer Kernel defined as follows:
+\begin{equation*}
+F_N(t) := \frac{1}{N+1}(\frac{sin(\pi(N+1)t)}{sin(\pi t)})^2
+\end{equation*}
+on the circle group $T^1$. It is graphed beautifully in Figure 2.
 
 \begin{figure}[h!bt]
 \centering
-\includegraphics[width = \textwidth]{matlab/fejerkernel}
+\includegraphics[scale=0.7]{matlab/fejerkernel}
 \caption{Fejer Kernel}
 \label{fejer}
 \end{figure}
+
 \end{example}
-
-\begin{theorem}
-approx. id. on locally compact group G with left Haar measure
-\end{theorem}
-
-\begin{theorem}
-ke familz of funcs on loc compact group G with properties...
-\end{theorem}
-
-\section{Required Stuff}
-
-\begin{enumerate}
-\item hausdorf topological space
-\item counting measure
-\item area of intersecting circles
-\item banach algebra
-\item hoelders inequality
-\item fubini
-\item chebyschevs inequality
-\item lebesgue dominated conv. thm.
-\item measure theoretic support
-\end{enumerate}
-
-chapter 1 stuff:
-\begin{enumerate}
-\item Lp norms and other defs etc.
-\item distr. functions
-\end{enumerate}
 
 \begin{appendix}
 \section{Poisson Kernel}
-Here's the code*.
+The matlab code for graphing the Poisson kernel:
+
+\inputminted{matlab}{matlab/aproIdInR.m}
+
+\section{Fejer Kernel}
+The matlab code for graphing the Fejer kernel:
+\inputminted{matlab}{matlab/fejerkernel.m}
+
 \end{appendix}
 
 \end{document}
