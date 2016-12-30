@@ -87,22 +87,16 @@ Convolution is defined $\lambda$ almost everywhere.
 
 \begin{proof}To see this we take the $L_1$ norm on the definition to find it finite:
 \begin{align*}
-\tag{Apply Norm}
  \norm{(f \ast g)(x)}_{L^1} &= \int_G \abs{ \int_G f(y) g(y^{-1}x) d\lambda(y) } d\lambda(x) 
 \\ 
-\tag{Tri. Ineq.}
 &\leq \int_G \int_G \abs[0]{f(y)} \abs[0]{g(y^{-1}x)} d\lambda(y) d\lambda(x) \\
- \tag{Fubini}
 &=  \int_G \int_G \abs[0]{f(y)} \abs[0]{g(y^{-1}x)} d\lambda(x) d\lambda(y) \\
- \tag{Measure-Invariance}
 &=  \int_G \abs[0]{f(y)} \int_G  \abs[0]{g(y^{-1}x)} d\lambda(x) d\lambda(y) \\
- \tag{Left Haar}
 &=  \int_G \abs[0]{f(y)} \int_G  \abs[0]{g(x)} d\lambda(x) d\lambda(y) \\
- \tag{Def.}
  &= \norm{f}_{L^1} \norm{g}_{L^1} \\
- \tag{Def.}
  &< \infty
 \end{align*}
+This proof followed simply from the triangle inequality for integrals, the definition of our norm, Fubini, and the properties of our measure.
 \end{proof}
 
 \begin{lemma}
@@ -116,10 +110,10 @@ We perform a change of variables $z = x^{-1}y$:
 \begin{align*}
 (f \ast g)(x) &= \int_G f(y)g(y^{-1}x) d\lambda(y) \\
 &= \int_G f(xx^{-1}y)g((yx^{-1})^{-1}) d\lambda(y) \\
-\tag{Left Invariance}
 &= \int_G f(xz)g(z^{-1}) d\lambda(x^{-1}y) \\
 &= \int_G f(xz)g(z^{-1}) d\lambda(z) \\
 \end{align*}
+Where we have made use of the inherent property of a Left Haar Measure.
 \end{proof}
 
 \begin{proposition}
@@ -135,11 +129,17 @@ Thus convolution is associative and distributive.
 \end{proposition}
 
 \begin{proof}
-Associativity:
+Associativity, as so many things, follows from an application of Fubini:
 \begin{align*}
-ZZZZZZZZZZ
+((f \ast g) \ast  h )(x) &= \int_G (f \ast g)(y) h(y^{-1}x) d\lambda(y) \\
+&= \int_G ( \int_G f(z)g(z^{-1}y)d\lambda(z)) h(y^{-1}x)d\lambda(y) \\
+&= \int_G  \int_G f(z)g(z^{-1}y) h(y^{-1}x)d\lambda(z) d\lambda(y) \\
+&= \int_G  f(z) \int_G g(z^{-1}y) h(y^{-1}x)d\lambda(y) d\lambda(z) \\
+&= \int_G  f(z) \int_G g(z^{-1}y) h(y^{-1}x)d\lambda(y) d\lambda(z) ZZZZ\\
+&= \int_G  f(z) (g \ast h)(xz^{-1}) d\lambda(z) \\
+&= (f \ast (g \ast  h ))(x) \\
 \end{align*}
-Distributivity:
+Distributivity follow from the additive properties of the integral:
 \begin{align*}
 f \ast (g + h) &= \int_G f(y) (g+h)(y^{-1}x)d\lambda(y)\\
 &= \int_G f(y) (g(y^{-1}x)+h(y^{-1}x))d\lambda(y)\\
@@ -151,10 +151,10 @@ The mirror statement follows analogously.
 \end{proof}
 
 \begin{remark}
-\begin{proof} Notice the following trivial equality:\begin{align*}
+ZZZZ (why does this even exist?)  ZZZZ Notice also the following trivial equality:\begin{align*}
 \norm{f}^{p/q}_{L^p} &= (( \int_G \abs{f(x)}^p d\lambda(x) )^{1/p} ) ^ {p/q} \\
 &= (\int_G \abs{f(x)}^p d\lambda(x) )^{1/q}
-\end{align*} \end{proof}
+\end{align*}
 \end{remark}
 
 \section{Basic Convolution Inequalities}
@@ -164,7 +164,7 @@ Define $ p' := p / (p-1) $. To maintain our desired property in infinity we also
 \end{definition}
 
 \begin{remark}
-Notice then: $\frac{1}{p} + \frac{1}{p'} = \frac{1}{p} + \frac{p-1}{p} = \frac{p}{p} = 1$
+Notice then $\frac{1}{p} + \frac{1}{p'} = \frac{1}{p} + \frac{p-1}{p} = \frac{p}{p} = 1$ for any $p \in (0,\infty]$
 \end{remark}
 
 \begin{remark}
@@ -186,10 +186,15 @@ $ \norm{g \ast f}_{L^p(G)} \leq \norm{g}_{L^1(G)} \norm{f}_{L^p(G)} $
 \end{theorem}
 
 \begin{proof}
-First we notice that the case of $p=1$ follows from (Lemma 3.1). Similarly we may rid ourselves of the easy case $p=\infty$ since:
-
+First we notice that the case of $p=1$ follows from (Lemma 3.1). Similarly we may rid ourselves of the easy case $p=\infty$ by again applying the triangle inequality and noticing that the $ess.sup$ always minimizes our norm:
+ (WTF ZZZZZZZZZZZZZZZ)
 \begin{align*}
-ZZZ
+\norm{(f \ast g)}_{L^\infty} &\leq \norm{(f \ast g)}_{L^1} \\
+&= \abs{\int_G f(y)g(y^{-1}x) d\lambda(y)} \\
+&\leq \int_G \abs{f(y)} \abs{g(y^{-1}x)} d\lambda(y) \\
+&\leq \norm{f}_{L^\infty} \int_G \abs{g(y^{-1}x)} d\lambda(y) \\
+&= \norm{f}_{L^\infty} \int_G \abs{g(y)} d\lambda(y) \\
+&= \norm{f}_{L^\infty} \norm{g}_{L^1}
 \end{align*}
 
 For $ 1 < p < \infty$, we must work a little harder. We have:
@@ -306,9 +311,14 @@ We now once more take the $L^q$ norm of the inequality since everything is absol
 As in Minkowski's Proof previously, we conclude $f \ast g$ exists $\lambda$-a.e. and satisfies the theorem.
 \end{proof}
 
+We are left wondering if there are similar results for weak $L_p$ spaces, fortunately Young has not left us hanging.
+
 \begin{theorem}
-Youngs Inequality for Weak Type Spaces
-ouch proof
+Young's Inequality for Weak Type Spaces:
+
+ZZZZZZZZZZZZz
+
+
 \end{theorem}
 
 \section{Approximate Identities}
