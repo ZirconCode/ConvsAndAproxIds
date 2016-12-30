@@ -47,7 +47,7 @@ This measure is called the Left Haar Measure, highlighted by the final property 
 For conclusive proof see ZZZZ
 \end{proof}
 
-In the remaining text $\lambda$ shall denote the Left Haar Measure on $G$. We shall make one final assumption, that $G$ is a countable union of compact subsets. This makes $(G,\lambda)$ a $\sigma$-finite measure space. We now have everything necessary.
+In the remaining text $\lambda$ shall denote the Left Haar Measure on $G$. We shall make one final assumption, that $G$ is a countable union of compact subsets. This makes $(G,\lambda)$ a $\sigma$-finite measure space. We now have that which is necessary to begin.
 	
 \section{Convolution}
 
@@ -66,7 +66,7 @@ Note that on $\mathbb{R}^n$ with an additive structure (our preferred environmen
 \end{remark}
 
 \begin{example}
-Let $G = \mathbb{R}$, 
+Let $G = \mathbb{R}$ with the usual additive structure and 
 \begin{equation}
 f(x) = \begin{cases}
 1 & -1 \leq x \leq 1 \\
@@ -79,9 +79,16 @@ Then we calculate:
 &= 
 \begin{cases}
 \displaystyle
-\int_\mathbb{R} 0 d\lambda(y) & -1 \leq x \leq 1 \\
+\int_\mathbb{R} \chi_{\intcc{-1,1}\cap\intcc{x-1,x+1}}(x) d\lambda(x) & -2 \leq x \leq 2 \\
 \displaystyle
-\int_\mathbb{R} \chi_{\intcc{-1,1}\cap\intcc{x-1,x+1}}(x) d\lambda(x) & \text{else}
+\int_\mathbb{R} 0 d\lambda(y) & \text{else}
+\end{cases} \\
+&= 
+\begin{cases}
+\displaystyle
+2-\abs{x} & -2 \leq x \leq 2 \\
+\displaystyle
+0 & \text{else}
 \end{cases} 
 \end{align*}
 
@@ -194,7 +201,7 @@ $ \norm{g \ast f}_{L^p(G)} \leq \norm{g}_{L^1(G)} \norm{f}_{L^p(G)} $
 \end{theorem}
 
 \begin{proof}
-First we notice that the case of $p=1$ follows from (Lemma 3.1). Similarly\footnote{As in Minkowski this only works with the Abelian property, however it is possible to adapt as well} we may rid ourselves of the case $p=\infty$ by again applying the triangle inequality and recalling that $\abs{f} \leq \norm{f}_{L^\infty}$:
+First we notice that the case of $p=1$ follows from (Lemma 3.1). Similarly\footnote{This only works with the Abelian property, however it is possible to assume some small additional necessities to make it work in non-commutative groups} we may rid ourselves of the case $p=\infty$ by again applying the triangle inequality and recalling that $\abs{f} \leq \norm{f}_{L^\infty}$:
 \begin{align*}
 \abs{(f \ast g)} &= \abs{\int_G f(y)g(y^{-1}x) d\lambda(y)} \\
 &\leq \int_G \abs{f(y)} \abs{g(y^{-1}x)} d\lambda(y) \\
