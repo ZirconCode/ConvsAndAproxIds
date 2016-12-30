@@ -339,7 +339,11 @@ ZZZZZZZZZZZZz
 
 \section{Approximate Identities}
 
-Approximation of dirac delta function , identity element of convolutions
+We are left wondering if there is an identity element under convolution, a function $g$ such that 
+\begin{equation*}
+\forall f \in L^1(G): g \ast f = f \ast g = f
+\end{equation*}
+In the next chapter the Dirac delta distribution, which full fills this quality, is introduced. However since this is not a function, we shall make do with the concept of approximating such a $g$ with a series of functions with appropriate characteristics.
 
 \begin{definition}
 An \textbf{approximate identity} (as $\varepsilon \rightarrow 0$) is a family of $L^1(G)$ functions $k_\varepsilon$ with the following three properties: 
@@ -485,6 +489,7 @@ then similarly the following is true:
 \begin{proof}
 The proof is analogous to the previous proof, working with $a$ instead of $1$.\end{proof}
 
+Let us inspect a typical case in order to help us visualize the behaviour of an approximate identity:
 
 \begin{example}
 
@@ -505,7 +510,7 @@ Notice first a convenience:
 &= \norm{P_\epsilon(x)}_{L^1}
 \end{align*}
 
-By a change of variables $x$ to $\frac{x}{\epsilon}$ and noticing that the function is positive. With this insight we can prove required property $(i)$ and $(ii)$:
+by a change of variables $x$ to $\frac{x}{\epsilon}$ and noticing that the function is positive. With this insight we can prove required property $(i)$ and $(ii)$:
 \begin{align*}
 \int_\mathbb{R} \frac{1}{\pi(x^2+1)} d\lambda(x) &= \int_{-\infty}^{+\infty} \frac{1}{\pi(x^2+1)} dx \\
 &= \lim_{a\to +\infty} \int_{-a}^{+a} \frac{1}{\pi(x^2+1)} dx \\
@@ -515,16 +520,22 @@ By a change of variables $x$ to $\frac{x}{\epsilon}$ and noticing that the funct
 &= 1
 \end{align*}
 
-Proving property $(ii)$. Notice that $(ii) \wedge (k_\epsilon \leq 0) \implies (i)$ on $\mathbb{R}$. To prove $(iii)$ we notice that $V^c(e)$ on $\mathbb{R}$ is simply the set $\cbr{ x \in \mathbb{R} : \abs{x} \geq \delta}$ for some $\delta > 0$. We integrate:
+Notice that $(ii) \wedge (k_\epsilon \leq 0) \implies (i)$ on $\mathbb{R}$. To prove $(iii)$ we notice that $V^c(e)$ on $\mathbb{R}$ is simply the set $\cbr{ x \in \mathbb{R} : \abs{x} \geq \delta}$ for some $\delta > 0$. We integrate:
 
 \begin{align*}
 \int_{\cbr{ x \in \mathbb{R} : \abs{x} \geq \delta}} \abs{P_\epsilon} d\lambda(x) &= \int_{\cbr{ x \in \mathbb{R} : \abs{x} \geq \delta}} \abs{\frac{1}{\epsilon}\frac{1}{\pi((\frac{x}{\epsilon})^2+1)}} d\lambda(x) \\
 &= \frac{1}{\pi} \int_{\cbr{ x \in \mathbb{R} : \abs{x} \geq \delta}} \abs{\frac{1}{\epsilon}\frac{1}{((\frac{x}{\epsilon})^2+1)}} d\lambda(x)\\
-zzz
 &= 1 - \frac{2}{\pi} \arctan(\frac{\delta}{\epsilon})
 \end{align*}
 
-Which goes to $0$ as $\epsilon \to 0$ since $\arctan(\frac{\delta}{\epsilon}) \to \frac{\pi}{2}$. Thus we have shown that the Poisson kernel is an approximate identity.
+Which goes to $0$ as $\epsilon \to 0$ since $\arctan(\frac{\delta}{\epsilon}) \to \frac{\pi}{2}$. Thus we have shown that the Poisson kernel is an approximate identity. Figure 1 depicts this kernel.
+
+\begin{figure}[h!bt]
+\centering
+\includegraphics[width = \textwidth]{matlab/poissonkernel}
+\caption{Poisson Kernel}
+\label{fejer}
+\end{figure}
 
 \end{example}
 
