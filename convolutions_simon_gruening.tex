@@ -329,12 +329,35 @@ As in Minkowski's Proof previously, we conclude $f \ast g$ exists $\lambda$-a.e.
 We are left wondering if there are similar results for weak $L_p$ spaces, fortunately Young has not left us hanging.
 
 \begin{theorem}
-Young's Inequality for Weak Type Spaces:
-
-ZZZZZZZZZZZZz
-
-
+Young's Inequality for Weak Type Spaces. Let $1\leq p < \infty$, $1<q$, and $r<\infty$ such that
+\begin{equation*}
+\frac{1}{q}+1 = \frac{1}{p}+\frac{1}{r}
+\end{equation*} 
+Then for all $f \in L^p$ and $g \in L^{r,\infty}$ $f\ast g$ exists $\lambda$-a.e. and the following inequality holds:
+\begin{equation*}
+\norm{f \ast g}_{L^{q,\infty}} \leq C_{p,q,r}\norm{g}_{L^{r,\infty}} \norm{f}_{L^{p}}
+\end{equation*}
+where $C_{p,q,r} > 0$ is a constant dependant only on $p$,$q$, and $r$.
 \end{theorem}
+
+
+\begin{proof}
+
+Fix $M \in \mathbb{R} : M>0$. We shall pick a precise $M$ later in the proof when we know how we want it to look like. 
+The proof of this theorem once more splits the terms into more manageable pieces, this time we shall work with $g$ in the form of:
+\begin{enumerate}
+\item $g_1 := g\chi_{\abs{g}\leq M}$
+\item $g_2 := g\chi_{\abs{g} > M}$ 
+\end{enumerate}
+
+By application of Exercise 1.1.10(a) from the previous section we find:
+
+\begin{enumerate}
+\item $d_{g_1}(\alpha) = z$
+\end{enumerate}
+
+\end{proof}
+
 
 \section{Approximate Identities}
 
