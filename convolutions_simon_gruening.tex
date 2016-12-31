@@ -405,10 +405,93 @@ In an almost analogous manner we can estimate $g_2 \in L^t$ for $t < r$ to find
 \end{align*} 
 where we have applied the same strategy as before.
 
-ZZZZ
+As in Young's other proof, we examine the relationship between the exponents again and notice that $\frac{1}{r} = \frac{1}{p'} + \frac{1}{q} \implies 1 < r < p'$. In hindsight we shall let $t = 1$ and $s = p'$, satisfying the previously set requirements for the constants. We apply H\"older's to our estimate of $g_1$ to receive
 
+\begin{align*}
+\abs{ f \ast g_1)(x)} &\leq \norm{f}_{L^p}\norm{g_1}_{L^{p'}} \\
+&\leq \norm{f}_{L^p} (\frac{p'}{p'-r}M^{p'-r} \norm{g}^r_{L^{r,\infty}})^\frac{1}{p'}
+\end{align*}
+
+When $p' = \infty$ this final term conveniently reduces to:
+
+\begin{equation}
+\abs{ f \ast g_1)(x)} \leq \norm{f}_{L^p}M
+\end{equation}
+ 
+We now choose $M$ such that if we substitute it into one of the two above final terms, in both cases we shall receive $\frac{\beta}{2}$. With some calculations we find that
+
+\begin{equation}
+M = \begin{cases}
+\displaystyle
+(\beta^{p'} 2^{-p'} rq^{-1} \norm{f}^{-p'}_{L^p} \norm{g}^{-r}_{L^{r,\infty}})^\frac{1}{p'-r} & \text{if } p' < \infty \\
+\displaystyle
+\frac{\beta}{2 \norm{f}_{L^1}} & \text{if } p' = \infty
+\end{cases}
+\end{equation}
+
+meets our requirements without violating any previous assumptions. It follows from prior discoveries that when $M$ is such then
+\begin{equation}
+d_{f \ast g_1}(\frac{\beta}{2})= 0
+\end{equation}
+
+and thus we shall continue with $g_2$ to complete 
+our proof. By applying Minkowski's inequality to our previous bounding of $g_2$ we have
+
+\begin{align*}
+\norm{f \ast g_2}_{L^p} &\leq \norm{f}_{L^p} \norm{g_2}_{L^1} \\
+&\leq \norm{f}_{L^p} \frac{r}{r-1} M^{1-r} \norm{g}^r_{L^{r,\infty}}
+\end{align*}
+
+We now have everything required to bound everything:
+
+\begin{align*}
+d_{f \ast g}(\beta) &\leq d_{f \ast g_1}(\frac{\beta}{2}) + d_{f \ast g_2}(\frac{\beta}{2}) \\
+&= d_{f \ast g_2}(\frac{\beta}{2} \\
+&\leq (2 \norm{f \ast g_2}_{L^p} \beta^{-1}) ^ p \\
+&\leq (2 (r \norm{f}_{L^p} M^{1-r} \norm{g}^r_{L^{r,\infty}} (r-1)^{-1}) \beta^{-1})\\
+&= C^q_{p,q,r} \beta^{-q} \norm{f}^q_{L^p} \norm{g}^q_{L^{r,\infty}}
+\end{align*}
+
+Here we have substituted $M$ and applied Chebyshev's inequality for the second step. We see that the inequality in the theorem holds and that 
+\begin{equation*}
+C_{p,q,r} \to (r-1)^{-\frac{p}{q}} \text{ when } r \to 1.
+\end{equation*}
+
+concluding our proof.
 
 \end{proof}
+
+We must however make the reader aware of the failing edge cases of Young's Weak Inequality. It is also clear to see that when $r=q=\infty \wedge p=1$ the equality is trivial.
+
+\begin{remark}
+Let $G=\mathbb{R}$ with the additive structure and $r=1 \wedge 1\leq p =q \leq \infty$. We shall choose the functions $g=\frac{1}{\abs{x}}$ and $f=\chi_{[0,1]}$. It is easy to see that $g \in L^{1,\infty}$ and $f \in L^p$. Inspecting $f \ast g$ on the interval $[0,1]$ however yields that
+\begin{align*}
+(f \ast g)(x) &= \int_\mathbb{R} f(y)g(x-y) d\lambda(y)\\
+&= \int_\mathbb{R} \chi_{[0,1]}(y) \frac{1}{\abs{x-y}} d\lambda(y) \\
+&= \int_0^1 \frac{1}{\abs{x-y}} d\lambda(y) \\
+&= \infty
+\end{align*} 
+clearly contradicting Young's Weak.
+\end{remark}
+
+\begin{remark}
+Once more let $G=\mathbb{R}$. For exponents we take $q = \infty \wedge 1<r = p' < \infty.$ For functions:
+\begin{equation*}
+f = 
+\begin{cases}
+\displaystyle
+\frac{1}{\abs{x}^\frac{1}{p} log\abs{x}} & if \abs{x} \geq 2 \\
+\displaystyle
+0 & else
+\end{cases} 
+\end{equation*}
+and
+\begin{equation*}
+g = \abs{x}^\frac{-1}{r}
+\end{equation*}
+In a similar vein to the previous remark we find that $(f \ast g)(x) = \infty$ on the interval $[-1,1]$, contradicting Young's Weak.
+\end{remark}
+
 
 
 \section{Approximate Identities}
@@ -445,7 +528,7 @@ Let us first prove the statement in finite $L^p$ spaces. We shall make use of th
 &\leq (\esssup_x (\abs{g(h^{-1}x)} )+\esssup_x(\abs{g(x)}) )^p \\
 &\leq (2\norm{g}_{L^\infty})^p
 \end{align*}
-Applying the Lebesgue Dominated Convergence theorem (*) we find:
+Applying the Lebesgue Dominated Convergence theorem to the above restricted sequentially on the domain we find:
 \begin{align*}
 \int_G \abs{g(h^{-1}x)-g(x)}^p d\lambda(x) \to 0 \text{ as } h \to e
 \end{align*}
@@ -457,11 +540,11 @@ However we can now say that since $f$ is continuous,
 \begin{equation}
 \delta > 0 : \exists V(e): h \in V(e) \implies \int_G \abs{f(h^{-1}x) - f(x)}^p d\lambda(x) < (\frac{\delta}{2})^p ( \frac{1}{c})
 \end{equation}
-Where $c*$, $V(e)$ is a neighborhood of $e$. We shall fix this neighborhood for later. We have picked the value on the right side for later convenience. As with most proofs in this area, we shall split the object of our analysis into two parts we can evaluate:
+Where $c$ is from property (1) of our approximate identity and $V(e)$ is a neighborhood of $e$. We shall fix this neighborhood for later. We have picked the value on the right side for later convenience. As with most proofs in this area, we shall split the object of our analysis into two parts we can evaluate:
 \begin{align*}
 (k_\epsilon \ast f)(x) - f(x) &= \int_G (f(y^{-1}x)-f(x))k_\epsilon(y) d\lambda(y)
 \end{align*}
-We take $L^p$ norms on both sides. This preserves the equality since *.
+We take $L^p$ norms on both sides, 
 \begin{align*}
 \norm{(k_\epsilon \ast f)(x) - f(x)}_{L^p(G)} &= \norm{\int_G (f(y^{-1}x)-f(x))k_\epsilon(y) d\lambda(y)}_{L^p(G)} \\
 &= (\int_G \abs{\int_G (f(y^{-1}x)-f(x))k_\epsilon(y) d\lambda(y)}^p d\lambda(x) )^{\frac{1}{p}}\\
@@ -469,7 +552,7 @@ We take $L^p$ norms on both sides. This preserves the equality since *.
 &= (\int_G \int_V \abs{f(y^{-1}x)-f(x)}^p \abs{k_e(y)} d\lambda(y) d\lambda(x) 
 + \int_G \int_{V^c} \abs{f(y^{-1}x)-f(x)}^p \abs{k_e(y)} d\lambda(y) d\lambda(x) )^{\frac{1}{p}}
 \end{align*}
-Where the inequality originates from Jensen's inequality *. Notice that we can now inspect on $V$ and $V^c$, we shall call the respective parts of the function $F_V$ and $F_{V^c}$ such that our last statement can be rewritten as $ ( F_V + F_{V_c} )^{\frac{1}{p}}$ for convenience. We now look at them individually. 
+Where the inequality originates from Jensen's inequality for integrals. Notice that we can now inspect on $V$ and $V^c$, we shall call the respective parts of the function $F_V$ and $F_{V^c}$ such that our last statement can be rewritten as $ ( F_V + F_{V_c} )^{\frac{1}{p}}$ for convenience. We now look at them individually. 
 
 \begin{align*}
 F_V &= \int_G \int_V \abs{f(y^{-1}x)-f(x)}^p \abs{k_e(y)} d\lambda(y) d\lambda(x)\\
@@ -481,7 +564,7 @@ F_V &= \int_G \int_V \abs{f(y^{-1}x)-f(x)}^p \abs{k_e(y)} d\lambda(y) d\lambda(x
 &\leq ( (\frac{\delta}{2})^p \frac{1}{c} ) c\\
 &= ( (\frac{\delta}{2})^p )\\
 \end{align*}
-Here we have used Fubini *, substituted our previously discovered upper bound, and used property $(i)$ intrinsic of any approximate identity, as defined. We bound the other half now:
+Here we have used Fubini, substituted our previously discovered upper bound, and used property $(i)$ intrinsic of any approximate identity, as defined. We bound the other half now:
 
 \begin{align*}
 F_{V^p} &= \int_G \int_{V^c} \abs{f(y^{-1}x)-f(x)}^p \abs{k_\epsilon(y)} d\lambda(y) d\lambda(x) \\
@@ -491,10 +574,9 @@ F_{V^p} &= \int_G \int_{V^c} \abs{f(y^{-1}x)-f(x)}^p \abs{k_\epsilon(y)} d\lambd
 &= \int_{V^c} (2\norm{f}^p_{L^p}) \abs{k_\epsilon(y)} d\lambda(x) d\lambda(y) \\
 &= (2\norm{f}^p_{L^p}) \int_{V^c} \abs{k_\epsilon(y)} d\lambda(x) d\lambda(y) \\
 &\leq (2\norm{f}^p_{L^p}) \int_{V^c} \abs{k_\epsilon(y)} d\lambda(x) d\lambda(y) \\
-ZZZ \\
 &\leq ( (\frac{\delta}{2})^p )
 \end{align*}
-Were we have once again used Fubini *, the definition of our norm, minkowski's *, and have choosen a correct neighborhood $V^c$... *. Putting our function back together we find:
+Were we have proceeded as before with the slight variation of applying Minkowski's, and having chosen a correct neighbourhood $V^c$. Putting our function back together we find:
 
 \begin{align*}
 (F_V + F_{V^c}) &\leq (\frac{\delta}{2})^p + (\frac{\delta}{2})^p ) ^{\frac{1}{p}}\\
@@ -504,10 +586,10 @@ Were we have once again used Fubini *, the definition of our norm, minkowski's *
 
 Where the final inequality follows from the fact that $p \geq 1 \implies \frac{1}{p} \leq 1$ and Ex. 1.1.4 from the previous section. We have proven property $(1)$ of our theorem since the norm becomes arbitrarily small and thus converges to 0.
 
-We shall no prove the case of $ p = \infty$. First we prepare some ingredients. We have required that f is bounded and uniformly continuous. Recall:
+We shall now prove the case of $ p = \infty$. First we prepare some ingredients. We have required that f is bounded and uniformly continuous. Recall:
 
 \begin{align*}
-f \text{uniformly continuous} \implies \delta > 0 : \forall  V(e): \abs{f(y^{-1}x)-f(x)} < \frac{\delta}{2c}
+f \text{ uniformly continuous} \implies \delta > 0 : \forall  V(e): \abs{f(y^{-1}x)-f(x)} < \frac{\delta}{2c}
 \end{align*}
 
 Furthermore from property $(iii)$ of an approximate identity we have:
@@ -531,11 +613,10 @@ Once more we shall split our normed function:
 &\leq (\frac{\delta}{2c}) \int_G  \abs{ k_\epsilon(y) d\lambda(y)} +  \int_{V^c}\sup_{x\in G}\abs{ f(y^{-1}x)-f(x)}\abs{ k_\epsilon(y) d\lambda(y)}\\
 &\leq (\frac{\delta}{2c}) c +  \int_{V^c}\sup_{x\in G}\abs{ f(y^{-1}x)-f(x)}\abs{ k_\epsilon(y) d\lambda(y)}\\
 &= (\frac{\delta}{2}) +  \int_{V^c}\sup_{x\in G}\abs{ f(y^{-1}x)-f(x)}\abs{ k_\epsilon(y) d\lambda(y)}\\
-*\\
-\leq \frac{\delta}{2} + \frac{\delta}{2}
-\leq \delta
+&\leq \frac{\delta}{2} + \frac{\delta}{2}
+&\leq \delta
 \end{align*}
-Here we have normed our required equality, split the integral into neighborhood and complement, used the triangle inequality,   and applied previous definitions and preparatory discoveries *. Note at the end we have added one case of 0 *.
+Here we have normed our required equality, split the integral into neighbourhood and complement, used the triangle inequality, and applied previous definitions and the preparatory discoveries. Note that in the case of $\norm{f}^\infty = 0$ we have increased our denominator slightly as to avoid division by $0$.
 
 This concludes the proof of both parts.
 \end{proof}
