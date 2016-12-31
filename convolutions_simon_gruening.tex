@@ -353,8 +353,60 @@ The proof of this theorem once more splits the terms into more manageable pieces
 By application of Exercise 1.1.10(a) from the previous section we find:
 
 \begin{enumerate}
-\item $d_{g_1}(\alpha) = z$
+\item $d_{g_1}(\alpha) = 
+\begin{cases}
+\displaystyle
+0 & if \alpha \geq M \\
+\displaystyle
+d_g(\alpha) - d_g(M) & if \alpha < M
+\end{cases}$
+\item $d_{g_2}(\alpha) = 
+\begin{cases}
+\displaystyle
+d_g(\alpha) & if \alpha > M \\
+\displaystyle
+d_g(M) & if \alpha \leq M
+\end{cases}$
 \end{enumerate}
+
+Having chosen this parting of $g$ we quickly see that:
+
+\begin{align*}
+(f \ast g_1) + (f\ast g_2) &= f \ast (g_1 + g_2) \\
+&= f \ast g
+\end{align*}
+
+And thus we call to mind Proposition 1.1.3 (3), and by substitution of the above equality we find
+\begin{equation*}
+d_{f \ast g}(\beta) \leq d_{f \ast g_1} (\frac{\beta}{2}) + d_{f \ast g_2} (\frac{\beta}{2})
+\end{equation*}
+must hold for all $\beta > 0$. We thus find we may bound $g_1$ and $g_2$ separately to come to a result. We begin by bounding $g_1$, and since $g_1$ is the cut below $M$ we see that $g_1 \in L^s$ as long as $s > r$ by the simple fact of $g \in L^{r,\infty}$. Additionally we assume $s < \infty$. Applying Proposition 1.1.4, we find
+
+\begin{align*}
+\norm{g_1}_{L^s}^s &= \int_G g_1(x)^s d\lambda(x)\\
+&= s \int_0^\infty \alpha^{s-1} d_{g_1}(\alpha) d\alpha \\
+&= s \int_0^M \alpha^{s-1} (d_{g}(\alpha)-d_{g}(M)) d\alpha \\
+&= s \int_0^M \alpha^{s-1} \frac{\alpha^r}{\alpha^r} (d_{g}(\alpha)-d_{g}(M)) d\alpha \\
+&= s \int_0^M \alpha^{s-1-r} \alpha^r (d_{g}(\alpha)-d_{g}(M)) d\alpha \\
+&= s \int_0^M \alpha^{s-1-r} (\alpha^r d_{g}(\alpha)) d\alpha - s \int_0^M \alpha^{s-1} d_{g}(M) d\alpha \\
+&\leq s \int_0^M \alpha^{s-1-r} \norm{g}^r_{L^{r,\infty}} d\alpha - s \int_0^M \alpha^{s-1} d_{g}(M) d\alpha \\
+&= \frac{s}{s-r}M^{s-r} \norm{g}^r_{L^{r,\infty}} - M^s d_g(M)
+\end{align*}
+where we have applied our definition of $g_1$, removed the $0$ part, and made use of the fact that $\norm{g}_{L^{r,\infty}} \leq \norm{g}_{L^{r}}$.
+In an almost analogous manner we can estimate $g_2 \in L^t$ for $t < r$ to find
+\begin{align*}
+\norm{g_2}_{L^t}^t &= \int_G g_2(x)^t d\lambda(x)\\
+&= t \int_0^\infty \alpha^{t-1} d_{g_2}(\alpha) d\alpha \\
+&= t \int_0^M \alpha^{t-1} d_{g}(M) d\alpha + t \int_M^\infty \alpha^{t-1} d_{g}(\alpha) d\alpha \\
+&\leq M^t d_g(M) + t \int_M^\infty \alpha^{t-1-r} \norm{g}^r_{L^{r,\infty}} d\alpha \\
+&\leq M^{t-r} \norm{g}^r_{L^{r,\infty}} + \frac{t}{r-t} M^{t-r} \norm{g}^r_{L^{r,\infty}}\\
+&= (1+\frac{t}{r-1}) M^{t-r} \norm{g}^r_{L^{r,\infty}} \\
+&= (\frac{r}{r-t}) M^{t-r} \norm{g}^r_{L^{r,\infty}}
+\end{align*} 
+where we have applied the same strategy as before.
+
+ZZZZ
+
 
 \end{proof}
 
