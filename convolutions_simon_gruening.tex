@@ -24,7 +24,7 @@ $G$ is a Topological Group if and only if the following are true:
 \begin{definition}
 A Topological Group $G$ is Locally Compact if 
 \begin{equation*}
-\exists U \subset G: e \in U \wedge U \text{is compact}
+\exists U \subset G \text{ open}: e \in U \wedge \overline{U} \text{is compact}
 \end{equation*}
 where $e$ is the identity element of $G$.
 \end{definition}
@@ -43,7 +43,7 @@ This measure is called the Left Haar Measure, highlighted by the final property 
 \end{lemma}
 
 \begin{proof}
-For conclusive proof see ZZZZ
+For conclusive proof see the Appendix in Grafakous.
 \end{proof}
 
 In the remaining text $\lambda$ shall denote the Left Haar Measure on $G$. We shall make one final assumption, that $G$ is a countable union of compact subsets. This makes $(G,\lambda)$ a $\sigma$-finite measure space. We now have that which is necessary to begin.
@@ -101,7 +101,7 @@ Convolution is defined $\lambda$ almost everywhere.
 
 \begin{proof}To see this we take the $L_1$ norm on the definition to find it finite:
 \begin{align*}
- \norm{(f \ast g)(x)}_{L^1} &= \int_G \abs{ \int_G f(y) g(y^{-1}x) d\lambda(y) } d\lambda(x) 
+ \norm{(f \ast g)}_{L^1} &= \int_G \abs{ \int_G f(y) g(y^{-1}x) d\lambda(y) } d\lambda(x) 
 \\ 
 &\leq \int_G \int_G \abs[0]{f(y)} \abs[0]{g(y^{-1}x)} d\lambda(y) d\lambda(x) \\
 &=  \int_G \int_G \abs[0]{f(y)} \abs[0]{g(y^{-1}x)} d\lambda(x) d\lambda(y) \\
@@ -164,13 +164,6 @@ f \ast (g + h) &= \int_G f(y) (g+h)(y^{-1}x)d\lambda(y)\\
 The mirror statement follows analogously. 
 \end{proof}
 
-\begin{remark}
-ZZZZ (why does this even exist?)  ZZZZ Notice also the following trivial equality:\begin{align*}
-\norm{f}^{p/q}_{L^p} &= (( \int_G \abs{f(x)}^p d\lambda(x) )^{1/p} ) ^ {p/q} \\
-&= (\int_G \abs{f(x)}^p d\lambda(x) )^{1/q}
-\end{align*}
-\end{remark}
-
 \section{Basic Convolution Inequalities}
 
 \begin{definition}
@@ -200,9 +193,9 @@ $ \norm{g \ast f}_{L^p(G)} \leq \norm{g}_{L^1(G)} \norm{f}_{L^p(G)} $
 \end{theorem}
 
 \begin{proof}
-First we notice that the case of $p=1$ follows from (Lemma 3.1). Similarly\footnote{This only works with the Abelian property, however it is possible to assume some small additional necessities to make it work in non-commutative groups} we may rid ourselves of the case $p=\infty$ by again applying the triangle inequality and recalling that $\abs{f} \leq \norm{f}_{L^\infty}$:
+First we notice that the case of $p=1$ follows from (Lemma 3.1). Similarly\footnote{This only works with the Abelian property, however it is possible to assume some small additional necessities to make it work in non-commutative groups} we may rid ourselves of the case $p=\infty$ by again applying the triangle inequality and recalling that $\abs{f} \leq \norm{f}_{L^\infty}$ $\lambda$-almost-everywhere:
 \begin{align*}
-\abs{(f \ast g)} &= \abs{\int_G f(y)g(y^{-1}x) d\lambda(y)} \\
+\abs{(f \ast g)(x)} &= \abs{\int_G f(y)g(y^{-1}x) d\lambda(y)} \\
 &\leq \int_G \abs{f(y)} \abs{g(y^{-1}x)} d\lambda(y) \\
 &\leq \norm{f}_{L^\infty} \int_G \abs{g(y^{-1}x)} d\lambda(y) \\
 &= \norm{f}_{L^\infty} \int_G \abs{g(y)} d\lambda(y) \\
@@ -238,7 +231,6 @@ Since we are working with positive functions, by the monotonicity of the exponen
 \norm{(\int_G \abs{g(y)} 
  d\lambda(y))^{1/p'}(\int_G \abs{f(y^{-1}x)}^p \abs{g(y)} d\lambda(y))^{1/p} }_{L^p} \\
 &= ((\int_G \abs{g(y)} d\lambda(y))^\frac{p}{p'} \int_G \int_G \abs{f(y^{-1}x)}^p \abs{g(y)} d\lambda(y)d\lambda(x) )^\frac{1}{p} \\
-&= (\norm{g}^{p-1}_{L^1} \int_G \int_G \abs{f(y^{-1}x)}^p \abs{g(y)} d\lambda(y)d\lambda(x) )^\frac{1}{p} \\
 &= (\norm{g}^{p-1}_{L^1} \int_G \int_G \abs{f(y^{-1}x)}^p \abs{g(y)} d\lambda(y)d\lambda(x) )^\frac{1}{p} \\
 &= (\norm{g}^{p-1}_{L^1} \int_G \int_G \abs{f(y^{-1}x)}^p \abs{g(y)} d\lambda(x)d\lambda(y) )^\frac{1}{p} \\
 &= (\norm{g}^{p-1}_{L^1} \int_G \int_G \abs{f(y^{-1}x)}^p  d\lambda(x) \abs{g(y)} d\lambda(y) )^\frac{1}{p} \\
@@ -658,11 +650,11 @@ P_\epsilon(x) &:= \epsilon^{-1}P(\epsilon^{-1}x)
 Notice first a convenience:
 
 \begin{align*}
-\norm{P(x)}_{L^1} &= \int_\mathbb{R} \abs{\frac{1}{ \pi (x^2+1)} } d\lambda(x) \\
+\norm{P}_{L^1} &= \int_\mathbb{R} \abs{\frac{1}{ \pi (x^2+1)} } d\lambda(x) \\
 &= \int_\mathbb{R} \frac{1}{ \pi (x^2+1)} d\lambda(x) \\
 &= \int_\mathbb{R} \frac{1}{\epsilon(\pi (\frac{x}{\epsilon})^2+1)} d\lambda(x)\\
 &= \int_\mathbb{R} \abs{ \frac{1}{\epsilon(\pi (\frac{x}{\epsilon})^2+1)}} d\lambda(x)\\
-&= \norm{P_\epsilon(x)}_{L^1}
+&= \norm{P_\epsilon}_{L^1}
 \end{align*}
 
 by a change of variables $x$ to $\frac{x}{\epsilon}$ and noticing that the function is positive. With this insight we can prove required property $(i)$ and $(ii)$:
